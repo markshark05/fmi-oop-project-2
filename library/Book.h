@@ -2,31 +2,44 @@
 
 #include <string>
 #include <vector>
+#include <ostream>
 
 class Book
 {
 public:
-    std::string getAuthor();
+    std::string getAuthor() const;
     void setAuthor(const std::string& value);
 
-    std::string getTitle();
+    std::string getTitle() const;
     void setTitle(const std::string& value);
 
-    std::string getGenre();
+    std::string getGenre() const;
     void setGenre(const std::string& value);
 
-    std::string getDescription();
+    std::string getDescription() const;
     void setDescription(const std::string& value);
 
-    unsigned int getYear();
+    unsigned int getYear() const;
     void setYear(unsigned int value);
 
-    std::vector<std::string> getTags();
+    std::vector<std::string> getTags() const;
     void setTags(const std::vector<std::string>& value);
 
-    float getRating();
+    float getRating() const;
     void setRating(float value);
 
-    unsigned int getId();
+    unsigned int getId() const;
     void setId(unsigned int value);
+
+    std::ostream& print_summary(std::ostream& out) const;
+    std::ostream& print_detailed(std::ostream& out) const;
+private:
+    std::string author;
+    std::string title;
+    std::string genre;
+    std::string description;
+    int year;
+    std::vector<std::string> tags;
+    float rating;
+    unsigned int id;
 };
