@@ -6,8 +6,8 @@ class UserStore
 {
 public:
     void Add(const User& user);
-    User* getByUsername(std::string& username);
-    void RemoveByUsername(std::string& username);
+    User* getByUsername(const std::string& username);
+    void RemoveByUsername(const std::string& username);
 private:
     std::vector<User*> users;
 };

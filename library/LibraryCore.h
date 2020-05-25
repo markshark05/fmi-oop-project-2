@@ -18,8 +18,8 @@ public:
     void books_find(const std::string& option, const std::string& option_string);
     void books_sort(const std::string& option, const std::string& asc_desc);
     
-    void users_add(std::string user, std::string password);
-    void users_remove(std::string user);
+    void users_add(std::string username, std::string password);
+    void users_remove(std::string username);
 private:
     std::ostream& out;
 

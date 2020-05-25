@@ -9,9 +9,10 @@
 #include "CommandHelp.h"
 #include "CommandExit.h"
 
-LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out) :
+LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out, LibraryCore& core) :
     in(in),
     out(out),
+    core(core),
     running(false),
     commands{
         new CommandOpen,

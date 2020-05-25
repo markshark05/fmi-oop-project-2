@@ -6,13 +6,13 @@ class User
 {
 public:
     User();
-    std::string getUsername();
+    std::string getUsername() const;
     void setUsername(const std::string& value);
 
-    std::string getPassword();
+    std::string getPassword() const;
     void setPassword(const std::string& value);
 
-    bool getIsAdmin();
+    bool getIsAdmin() const;
     void setIsAdmin(bool value);
 private:
     std::string username;

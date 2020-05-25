@@ -5,6 +5,11 @@ CommandSave::CommandSave()
 {
 }
 
+bool CommandSave::authorize(bool userIsLoggedIn, bool userIsAdmin)
+{
+    return true;
+}
+
 void CommandSave::execute(std::ostream& out, const std::vector<std::string>& args)
 {
     out << "save executed" << std::endl;

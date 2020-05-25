@@ -7,9 +7,12 @@ class Command
 {
 public:
     Command(const std::string& name, int minArgsCount, const std::string& helpMessage);
+    
     const std::string& getName() const;
     int getMinArgsCount() const;
     const std::string& getHelpMessage() const;
+
+    virtual bool authorize(bool userIsLoggedIn, bool userIsAdmin) = 0;
     virtual void execute(std::ostream& out, const std::vector<std::string>& args) = 0;
 private:
     std::string name;

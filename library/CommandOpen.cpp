@@ -5,6 +5,11 @@ CommandOpen::CommandOpen() :
 {
 }
 
+bool CommandOpen::authorize(bool userIsLoggedIn, bool userIsAdmin)
+{
+    return true;
+}
+
 void CommandOpen::execute(std::ostream& out, const std::vector<std::string>& args)
 {
     out << "open executed" << std::endl;

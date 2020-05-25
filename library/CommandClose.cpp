@@ -5,6 +5,11 @@ CommandClose::CommandClose() :
 {
 }
 
+bool CommandClose::authorize(bool userIsLoggedIn, bool userIsAdmin)
+{
+    return true;
+}
+
 void CommandClose::execute(std::ostream& out, const std::vector<std::string>& args)
 {
     out << "close executed" << std::endl;

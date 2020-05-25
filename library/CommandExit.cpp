@@ -6,6 +6,11 @@ CommandExit::CommandExit(IStoppable* loop) :
 {
 }
 
+bool CommandExit::authorize(bool userIsLoggedIn, bool userIsAdmin)
+{
+    return true;
+}
+
 void CommandExit::execute(std::ostream& out, const std::vector<std::string>& args)
 {
     _loop->Stop();

@@ -153,6 +153,8 @@
     <ClCompile Include="CommandClose.cpp" />
     <ClCompile Include="CommandExit.cpp" />
     <ClCompile Include="CommandHelp.cpp" />
+    <ClCompile Include="CommandLogin.cpp" />
+    <ClCompile Include="CommandLogout.cpp" />
     <ClCompile Include="CommandOpen.cpp" />
     <ClCompile Include="CommandSave.cpp" />
     <ClCompile Include="CommandSaveAs.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="CommandClose.h" />
     <ClInclude Include="CommandExit.h" />
     <ClInclude Include="CommandHelp.h" />
+    <ClInclude Include="CommandLogin.h" />
+    <ClInclude Include="CommandLogout.h" />
     <ClInclude Include="CommandOpen.h" />
     <ClInclude Include="CommandSave.h" />
     <ClInclude Include="CommandSaveAs.h" />

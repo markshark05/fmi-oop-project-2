@@ -41,7 +41,7 @@ void LibraryCore::logout()
 
 void LibraryCore::books_all()
 {
-    std::vector<Book*> books = bookStore.Query(nullptr, nullptr);
+    std::vector<Book*> books = bookStore.GetAll();
 
     if (books.empty())
     {
@@ -95,7 +95,7 @@ void LibraryCore::books_find(const std::string& option, const std::string& optio
         return;
     }
 
-    std::vector<Book*> books = bookStore.Query(filter_f[option], nullptr);
+    std::vector<Book*> books = bookStore.GetFiltered(filter_f[option]);
     if (books.empty())
     {
         out << "No results found." << std::endl;
@@ -154,7 +154,7 @@ void LibraryCore::books_sort(const std::string& option, const std::string& asc_d
         return;
     }
 
-    std::vector<Book*> books = bookStore.Query(nullptr, sort_f[option]);
+    std::vector<Book*> books = bookStore.GetSorted(sort_f[option]);
     if (books.empty())
     {
         out << "No results found." << std::endl;
@@ -164,4 +164,18 @@ void LibraryCore::books_sort(const std::string& option, const std::string& asc_d
     {
         b->print_summary(out);
     }
+}
+
+void LibraryCore::users_add(std::string username, std::string password)
+{
+    User user;
+    user.setUsername(username);
+    user.setPassword(password);
+    
+    userStore.Add(user);
+}
+
+void LibraryCore::users_remove(std::string username)
+{
+    userStore.RemoveByUsername(username);
 }

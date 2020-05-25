@@ -1,11 +1,10 @@
 #pragma once
 #include "Command.h"
-
-class CommandSave :
+class CommandLogout :
     public Command
 {
 public:
-    CommandSave();
+    CommandLogout();
     bool authorize(bool userIsLoggedIn, bool userIsAdmin) override;
     void execute(std::ostream& out, const std::vector<std::string>& args) override;
 };
