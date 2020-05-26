@@ -5,7 +5,7 @@ CommandSaveAs::CommandSaveAs() :
 {
 }
 
-bool CommandSaveAs::authorize(bool userIsLoggedIn, bool userIsAdmin)
+bool CommandSaveAs::authorize()
 {
     return true;
 }

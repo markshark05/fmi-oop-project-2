@@ -5,7 +5,7 @@ CommandClose::CommandClose() :
 {
 }
 
-bool CommandClose::authorize(bool userIsLoggedIn, bool userIsAdmin)
+bool CommandClose::authorize()
 {
     return true;
 }

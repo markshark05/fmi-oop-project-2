@@ -1,15 +1,18 @@
 #include "CommandLogout.h"
 
-CommandLogout::CommandLogout()
-    :Command("logout", 0, "logout")
+CommandLogout::CommandLogout(AuthorizeContext& auth) :
+    Command("logout", 0, "logout"),
+    auth(auth)
 {
 }
 
-bool CommandLogout::authorize(bool userIsLoggedIn, bool userIsAdmin)
+bool CommandLogout::authorize()
 {
-    return userIsLoggedIn;
+    return auth.getActiveUser();
 }
 
 void CommandLogout::execute(std::ostream& out, const std::vector<std::string>& args)
 {
+    auth.setActiveUser(nullptr);
+    out << "Succesfully logged out" << std::endl;
 }

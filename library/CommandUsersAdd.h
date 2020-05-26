@@ -1,12 +1,16 @@
 #pragma once
 #include "Command.h"
 #include "AuthorizeContext.h"
+#include "UserStore.h"
 
-class CommandClose :
+class CommandUsersAdd :
     public Command
 {
 public:
-    CommandClose();
+    CommandUsersAdd(AuthorizeContext const& auth, UserStore& userStore);
     bool authorize() override;
     void execute(std::ostream& out, const std::vector<std::string>& args) override;
+private:
+    AuthorizeContext const& auth;
+    UserStore& userStore;
 };

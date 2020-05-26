@@ -6,6 +6,6 @@ class CommandSaveAs :
 {
 public:
     CommandSaveAs();
-    bool authorize(bool userIsLoggedIn, bool userIsAdmin) override;
+    bool authorize() override;
     void execute(std::ostream& out, const std::vector<std::string>& args) override;
 };

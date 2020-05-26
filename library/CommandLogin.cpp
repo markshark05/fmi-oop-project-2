@@ -1,15 +1,35 @@
 #include "CommandLogin.h"
 
-CommandLogin::CommandLogin()
-    :Command("login", 0, "login <interactive>")
+CommandLogin::CommandLogin(AuthorizeContext& auth, UserStore& userStore) :
+    Command("login", 0, "login <interactive>"),
+    auth(auth),
+    userStore(userStore)
 {
 }
 
-bool CommandLogin::authorize(bool userIsLoggedIn, bool userIsAdmin)
+bool CommandLogin::authorize()
 {
-    return true;
+    return !auth.getActiveUser();
 }
 
 void CommandLogin::execute(std::ostream& out, const std::vector<std::string>& args)
 {
+    const std::string& username = args[0];
+    const std::string& password = args[1];
+
+    if (auth.getActiveUser())
+    {
+        out << "You are already logged in." << std::endl;
+        return;
+    }
+
+    User* user = userStore.getByUsername(username);
+    if (user && user->getPassword() == password)
+    {
+        auth.setActiveUser(user);
+        out << "Welcome, " << username << "!" << std::endl;
+        return;
+    }
+
+    out << "Invalid login details" << std::endl;
 }

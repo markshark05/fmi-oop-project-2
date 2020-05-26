@@ -5,7 +5,7 @@ CommandOpen::CommandOpen() :
 {
 }
 
-bool CommandOpen::authorize(bool userIsLoggedIn, bool userIsAdmin)
+bool CommandOpen::authorize()
 {
     return true;
 }

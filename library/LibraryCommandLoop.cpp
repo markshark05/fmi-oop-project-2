@@ -1,18 +1,25 @@
 #include <sstream>
 #include "LibraryCommandLoop.h"
 
-#include "CommandOpen.h"
+#include "Command.h"
+#include "CommandBooksAll.h"
+#include "CommandBooksFind.h"
+#include "CommandBooksInfo.h"
+#include "CommandBooksSort.h"
 #include "CommandClose.h"
+#include "CommandExit.h"
+#include "CommandHelp.h"
+#include "CommandLogin.h"
+#include "CommandLogout.h"
+#include "CommandOpen.h"
 #include "CommandSave.h"
 #include "CommandSaveAs.h"
+#include "CommandUsersAdd.h"
+#include "CommandUsersRemove.h"
 
-#include "CommandHelp.h"
-#include "CommandExit.h"
-
-LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out, LibraryCore& core) :
+LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out) :
     in(in),
     out(out),
-    core(core),
     running(false),
     commands{
         new CommandOpen,

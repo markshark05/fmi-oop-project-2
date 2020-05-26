@@ -6,7 +6,7 @@ CommandExit::CommandExit(IStoppable* loop) :
 {
 }
 
-bool CommandExit::authorize(bool userIsLoggedIn, bool userIsAdmin)
+bool CommandExit::authorize()
 {
     return true;
 }

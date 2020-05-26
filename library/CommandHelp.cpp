@@ -6,6 +6,11 @@ CommandHelp::CommandHelp(ICommands* loop) :
 {
 }
 
+bool CommandHelp::authorize()
+{
+    return true;
+}
+
 void CommandHelp::execute(std::ostream& out, const std::vector<std::string>& args)
 {
     std::vector<Command*> commands = _loop->getCommands();

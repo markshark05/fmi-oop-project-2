@@ -147,9 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AuthorizeContext.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookStore.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandBooksAll.cpp" />
+    <ClCompile Include="CommandBooksFind.cpp" />
+    <ClCompile Include="CommandBooksInfo.cpp" />
+    <ClCompile Include="CommandBooksSort.cpp" />
     <ClCompile Include="CommandClose.cpp" />
     <ClCompile Include="CommandExit.cpp" />
     <ClCompile Include="CommandHelp.cpp" />
@@ -158,16 +163,22 @@
     <ClCompile Include="CommandOpen.cpp" />
     <ClCompile Include="CommandSave.cpp" />
     <ClCompile Include="CommandSaveAs.cpp" />
+    <ClCompile Include="CommandUsersAdd.cpp" />
+    <ClCompile Include="CommandUsersRemove.cpp" />
     <ClCompile Include="LibraryCommandLoop.cpp" />
-    <ClCompile Include="LibraryCore.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserStore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AuthorizeContext.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookStore.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandBooksAll.h" />
+    <ClInclude Include="CommandBooksFind.h" />
+    <ClInclude Include="CommandBooksInfo.h" />
+    <ClInclude Include="CommandBooksSort.h" />
     <ClInclude Include="CommandClose.h" />
     <ClInclude Include="CommandExit.h" />
     <ClInclude Include="CommandHelp.h" />
@@ -176,10 +187,11 @@
     <ClInclude Include="CommandOpen.h" />
     <ClInclude Include="CommandSave.h" />
     <ClInclude Include="CommandSaveAs.h" />
+    <ClInclude Include="CommandUsersAdd.h" />
+    <ClInclude Include="CommandUsersRemove.h" />
     <ClInclude Include="ICommands.h" />
     <ClInclude Include="IStoppable.h" />
     <ClInclude Include="LibraryCommandLoop.h" />
-    <ClInclude Include="LibraryCore.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserStore.h" />
   </ItemGroup>
