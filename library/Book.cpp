@@ -83,25 +83,32 @@ void Book::setId(unsigned int value)
 std::ostream& Book::print_summary(std::ostream& out) const
 {
     out
-        << "Title: " << title
-        << "Author: " << author
-        << "Genre: " << genre
-        << "Id: " << id
+        << "Id: " << id << " "
+        << "Title: " << title << " "
+        << "Author: " << author << " "
+        << "Genre: " << genre << " "
         << std::endl;
+
     return out;
 }
 
 std::ostream& Book::print_detailed(std::ostream& out) const
 {
     out
+        << "Id: " << id << std::endl
         << "Title: " << title << std::endl
         << "Author: " << author << std::endl
         << "Genre: " << genre << std::endl
         << "Year: " << year << std::endl
         << "Description: " << description << std::endl
         << "Rating: " << rating << std::endl
-        << "Id: " << id << std::endl
-        << std::endl;
+        << "Tags: " << rating << std::endl;
+    
+    for (const std::string& t : tags)
+    {
+        out << t << " ";
+    }
+    out << std::endl;
     
     return out;
 }

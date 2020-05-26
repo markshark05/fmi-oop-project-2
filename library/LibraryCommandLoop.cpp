@@ -118,5 +118,6 @@ std::vector<std::string> LibraryCommandLoop::parseArgs(std::istringstream& lines
     {
         args.push_back(token);
     }
+
     return args;
 }

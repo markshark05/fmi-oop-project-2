@@ -11,6 +11,7 @@ public:
     bool authorize() override;
     void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) override;
 private:
+    static std::string promptLine(std::istream& in, std::ostream& out, const std::string& prompt);
     AuthorizeContext const& auth;
     BookStore& bookStore;
 };
