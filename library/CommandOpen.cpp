@@ -10,7 +10,7 @@ bool CommandOpen::authorize()
     return true;
 }
 
-void CommandOpen::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandOpen::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     out << "open executed" << std::endl;
 }

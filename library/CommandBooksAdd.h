@@ -3,11 +3,11 @@
 #include "AuthorizeContext.h"
 #include "BookStore.h"
 
-class CommandBooksAll :
+class CommandBooksAdd :
     public Command
 {
 public:
-    CommandBooksAll(AuthorizeContext const& auth, BookStore& bookStore);
+    CommandBooksAdd(AuthorizeContext const& auth, BookStore& bookStore);
     bool authorize() override;
     void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) override;
 private:

@@ -1,5 +1,5 @@
 #pragma once
-#include <ostream>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -13,7 +13,7 @@ public:
     const std::string& getHelpMessage() const;
 
     virtual bool authorize() = 0;
-    virtual void execute(std::ostream& out, const std::vector<std::string>& args) = 0;
+    virtual void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) = 0;
 private:
     std::string name;
     int minArgsCount;

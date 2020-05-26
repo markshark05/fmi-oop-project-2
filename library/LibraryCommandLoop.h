@@ -1,5 +1,8 @@
 #pragma once
 #include <vector>
+#include "AuthorizeContext.h"
+#include "BookStore.h"
+#include "UserStore.h"
 #include "Command.h"
 #include "IStoppable.h"
 #include "ICommands.h"
@@ -9,7 +12,7 @@ class LibraryCommandLoop :
     public ICommands
 {
 public:
-    LibraryCommandLoop(std::istream& in, std::ostream& out);
+    LibraryCommandLoop(std::istream& in, std::ostream& out, AuthorizeContext& authCtx, BookStore& bookStore, UserStore& userStore);
     void Start();
     void Stop();
     const std::vector<Command*>& getCommands() const;

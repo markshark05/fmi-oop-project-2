@@ -1,12 +1,19 @@
 #include <map>
 #include "CommandBooksFind.h"
 
+CommandBooksFind::CommandBooksFind(AuthorizeContext const& auth, BookStore& bookStore) :
+    Command("books_find", 2, "books find <option> <option_string>"),
+    auth(auth),
+    bookStore(bookStore)
+{
+}
+
 bool CommandBooksFind::authorize()
 {
     return auth.getActiveUser();
 }
 
-void CommandBooksFind::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::string& option = args[0];
     const std::string& option_string = args[1];

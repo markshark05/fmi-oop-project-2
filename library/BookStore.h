@@ -7,7 +7,7 @@ class BookStore
 {
 public:
     using filterFunc = std::function<bool(const Book&)>;
-    using sortFunc = std::function<int(const Book&, const Book&)>;
+    using sortFunc = std::function<bool(Book* const&, Book* const&)>;
 
     BookStore();
     void Add(const Book& book);

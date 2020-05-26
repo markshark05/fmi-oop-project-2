@@ -12,7 +12,7 @@ bool CommandUsersAdd::authorize()
     return auth.getActiveUser() && auth.getActiveUser()->getIsAdmin();
 }
 
-void CommandUsersAdd::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandUsersAdd::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::string& username = args[0];
     const std::string& password = args[1];

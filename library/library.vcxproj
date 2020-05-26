@@ -151,6 +151,7 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookStore.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandBooksAdd.cpp" />
     <ClCompile Include="CommandBooksAll.cpp" />
     <ClCompile Include="CommandBooksFind.cpp" />
     <ClCompile Include="CommandBooksInfo.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookStore.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandBooksAdd.h" />
     <ClInclude Include="CommandBooksAll.h" />
     <ClInclude Include="CommandBooksFind.h" />
     <ClInclude Include="CommandBooksInfo.h" />

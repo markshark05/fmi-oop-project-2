@@ -10,7 +10,7 @@ bool CommandSaveAs::authorize()
     return true;
 }
 
-void CommandSaveAs::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandSaveAs::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     out << "saveas executed" << std::endl;
 }

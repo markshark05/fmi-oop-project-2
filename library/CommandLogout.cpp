@@ -11,7 +11,7 @@ bool CommandLogout::authorize()
     return auth.getActiveUser();
 }
 
-void CommandLogout::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandLogout::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     auth.setActiveUser(nullptr);
     out << "Succesfully logged out" << std::endl;

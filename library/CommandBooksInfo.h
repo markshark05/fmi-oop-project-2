@@ -9,7 +9,7 @@ class CommandBooksInfo :
 public:
     CommandBooksInfo(AuthorizeContext const& auth, BookStore& bookStore);
     bool authorize() override;
-    void execute(std::ostream& out, const std::vector<std::string>& args) override;
+    void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) override;
 private:
     AuthorizeContext const& auth;
     BookStore& bookStore;

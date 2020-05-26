@@ -12,7 +12,7 @@ bool CommandUsersRemove::authorize()
     return auth.getActiveUser() && auth.getActiveUser()->getIsAdmin();
 }
 
-void CommandUsersRemove::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandUsersRemove::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::string& username = args[0];
 

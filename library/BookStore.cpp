@@ -57,7 +57,7 @@ void BookStore::RemoveById(unsigned int id)
 std::vector<Book*> BookStore::Query(filterFunc filterF, sortFunc sortF)
 {
     std::vector<Book*> filtered;
-    for (Book* const& b : books)
+    for (auto b : books)
     {
         if (!filterF || filterF(*b))
         {

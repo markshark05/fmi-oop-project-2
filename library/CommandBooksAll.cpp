@@ -12,7 +12,7 @@ bool CommandBooksAll::authorize()
     return auth.getActiveUser();
 }
 
-void CommandBooksAll::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandBooksAll::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::vector<Book*> books = bookStore.GetAll();
 

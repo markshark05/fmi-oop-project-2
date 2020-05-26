@@ -12,7 +12,7 @@ bool CommandBooksInfo::authorize()
     return auth.getActiveUser();
 }
 
-void CommandBooksInfo::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandBooksInfo::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     unsigned int id = std::stoi(args[0]);
 

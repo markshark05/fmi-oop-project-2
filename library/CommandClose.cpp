@@ -10,7 +10,7 @@ bool CommandClose::authorize()
     return true;
 }
 
-void CommandClose::execute(std::ostream& out, const std::vector<std::string>& args)
+void CommandClose::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     out << "close executed" << std::endl;
 }

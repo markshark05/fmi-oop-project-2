@@ -2,6 +2,7 @@
 #include "LibraryCommandLoop.h"
 
 #include "Command.h"
+#include "CommandBooksAdd.h"
 #include "CommandBooksAll.h"
 #include "CommandBooksFind.h"
 #include "CommandBooksInfo.h"
@@ -17,7 +18,7 @@
 #include "CommandUsersAdd.h"
 #include "CommandUsersRemove.h"
 
-LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out) :
+LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out, AuthorizeContext& authCtx, BookStore& bookStore, UserStore& userStore) :
     in(in),
     out(out),
     running(false),
@@ -26,6 +27,18 @@ LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out) :
         new CommandClose,
         new CommandSave,
         new CommandSaveAs,
+
+        new CommandLogin{ authCtx, userStore },
+        new CommandLogout{ authCtx },
+
+        new CommandBooksAdd{ authCtx, bookStore },
+        new CommandBooksAll{ authCtx, bookStore },
+        new CommandBooksFind{ authCtx, bookStore },
+        new CommandBooksInfo{ authCtx, bookStore },
+        new CommandBooksSort{ authCtx, bookStore },
+
+        new CommandUsersAdd{ authCtx, userStore},
+        new CommandUsersRemove{ authCtx, userStore},
 
         new CommandHelp{ this },
         new CommandExit{ this },
@@ -80,9 +93,13 @@ void LibraryCommandLoop::loop()
                 {
                     out << "Expected " << command->getMinArgsCount() << " argument(s) but got " << args.size() << "." << std::endl;
                 }
+                else if (!command->authorize())
+                {
+                    out << "You are not authorized to perform this action." << std::endl;
+                }
                 else
                 {
-                    command->execute(out, args);
+                    command->execute(in, out, args);
                 }
             }
             else

@@ -1,5 +1,15 @@
 #include "UserStore.h"
 
+UserStore::UserStore()
+{
+    User* defaultUser = new User;
+    defaultUser->setUsername("admin");
+    defaultUser->setPassword("i<3c++");
+    defaultUser->setIsAdmin(true);
+
+    this->users.push_back(defaultUser);
+}
+
 void UserStore::Add(const User& user)
 {
     if (!getByUsername(user.getUsername()))

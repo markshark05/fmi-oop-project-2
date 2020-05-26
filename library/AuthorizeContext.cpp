@@ -1,5 +1,10 @@
 #include "AuthorizeContext.h"
 
+AuthorizeContext::AuthorizeContext() :
+    activeUser(nullptr)
+{
+}
+
 const User* AuthorizeContext::getActiveUser() const
 {
     return activeUser;
