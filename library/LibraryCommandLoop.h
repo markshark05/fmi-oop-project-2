@@ -12,16 +12,16 @@ class LibraryCommandLoop :
     public ICommands
 {
 public:
-    LibraryCommandLoop(std::istream& in, std::ostream& out, AuthorizeContext& authCtx, BookStore& bookStore, UserStore& userStore);
+    LibraryCommandLoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands);
     void Start();
     void Stop();
     const std::vector<Command*>& getCommands() const;
 private:
     std::istream& in;
     std::ostream& out;
+    std::vector<Command*>& commands;
 
     bool running;
-    std::vector<Command*> commands;
     void loop();
     std::vector<std::string> parseArgs(std::istringstream& linestream, unsigned int max);
 };

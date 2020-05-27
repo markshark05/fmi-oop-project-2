@@ -1,6 +1,6 @@
 #include "CommandExit.h"
 
-CommandExit::CommandExit(IStoppable* loop) :
+CommandExit::CommandExit(IStoppable& loop) :
     Command("exit", 0, "exists the program"),
     _loop(loop)
 {
@@ -13,6 +13,6 @@ bool CommandExit::authorize()
 
 void CommandExit::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    _loop->Stop();
+    _loop.Stop();
     out << "Exiting the program..." << std::endl;
 }
