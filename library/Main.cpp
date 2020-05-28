@@ -46,13 +46,13 @@ int main()
         new CommandUsersAdd{ authCtx, userStore},
         new CommandUsersRemove{ authCtx, userStore},
     };
-    
+
     LibraryCommandLoop cmdloop{ std::cin, std::cout, commands };
 
     commands.push_back(new CommandHelp{ cmdloop });
     commands.push_back(new CommandExit{ cmdloop });
 
     cmdloop.Start();
-    
+
     return 0;
 }

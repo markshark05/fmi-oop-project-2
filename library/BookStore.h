@@ -16,10 +16,10 @@ public:
     std::vector<Book*> GetFiltered(filterFunc filterF);
     std::vector<Book*> GetSorted(sortFunc sortF);
     void RemoveById(unsigned int id);
-
 private:
     std::vector<Book*> Query(filterFunc filterF, sortFunc sortF);
 
+    std::string* currentFileName;
     unsigned int auto_increment;
     std::vector<Book*> books;
 };
