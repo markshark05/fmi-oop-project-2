@@ -21,12 +21,6 @@ bool CommandBooksFind::fileRequirement()
 
 void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (!fileCtx->getActiveFile())
-    {
-        out << "Command requires an open file." << std::endl;
-        return;
-    }
-
     const std::string& option = args[0];
     const std::string& option_string = args[1];
 

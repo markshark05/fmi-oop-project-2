@@ -20,12 +20,6 @@ bool CommandBooksInfo::fileRequirement()
 
 void CommandBooksInfo::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (!fileCtx->getActiveFile())
-    {
-        out << "Command requires an open file." << std::endl;
-        return;
-    }
-
     unsigned int id = std::stoi(args[0]);
 
     Book* b = bookStore->getById(id);

@@ -20,12 +20,6 @@ bool CommandBooksAll::fileRequirement()
 
 void CommandBooksAll::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (!fileCtx->getActiveFile())
-    {
-        out << "Command requires an open file." << std::endl;
-        return;
-    }
-    
     const std::vector<Book*> books = bookStore->getAll();
     if (books.empty())
     {

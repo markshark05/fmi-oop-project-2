@@ -21,12 +21,6 @@ bool CommandBooksSort::fileRequirement()
 
 void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (!fileCtx->getActiveFile())
-    {
-        out << "Command requires an open file." << std::endl;
-        return;
-    }
-
     const std::string& option = args[0];
     const std::string& asc_desc = args[1];
 
