@@ -29,29 +29,29 @@ void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::v
         { "title", [asc_desc](Book* const& a, Book* const& b)
             {
                 return asc_desc == "desc"
-                    ? b->getTitle().compare(a->getTitle())
-                    : a->getTitle().compare(b->getTitle());
+                    ? b->getTitle() < a->getTitle()
+                    : a->getTitle() < b->getTitle();
             }
         },
         { "author",[asc_desc](Book* const& a, Book* const& b)
             {
                return asc_desc == "desc"
-                    ? b->getAuthor().compare(a->getAuthor())
-                    : a->getAuthor().compare(b->getAuthor());
+                    ? b->getAuthor() < a->getAuthor()
+                    : a->getAuthor() < b->getAuthor();
             }
         },
         { "year", [asc_desc](Book* const& a, Book* const& b)
             {
                 return asc_desc == "desc"
-                    ? b->getYear() - a->getYear()
-                    : a->getYear() - b->getYear();
+                    ? b->getYear() < a->getYear()
+                    : a->getYear() < b->getYear();
             }
         },
         { "rating",[asc_desc](Book* const& a, Book* const& b)
             {
                 return asc_desc == "desc"
-                    ? b->getRating() - a->getRating()
-                    : a->getRating() - b->getRating();
+                    ? b->getRating() < a->getRating()
+                    : a->getRating() < b->getRating();
             }
         }
     };
@@ -77,6 +77,6 @@ void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::v
 
     for (Book* const& b : books)
     {
-        b->print_summary(out);
+        b->print_sort_summary(out);
     }
 }

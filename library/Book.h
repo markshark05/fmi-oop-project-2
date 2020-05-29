@@ -43,5 +43,6 @@ public:
     void setId(unsigned int value);
 
     std::ostream& print_summary(std::ostream& out) const;
+    std::ostream& print_sort_summary(std::ostream& out) const;
     std::ostream& print_detailed(std::ostream& out) const;
 };

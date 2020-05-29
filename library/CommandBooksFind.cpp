@@ -58,6 +58,6 @@ void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::v
 
     for (Book* const& b : books)
     {
-        b->print_summary(out);
+        b->print_detailed(out) << std::endl;
     }
 }

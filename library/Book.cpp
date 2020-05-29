@@ -100,6 +100,19 @@ std::ostream& Book::print_summary(std::ostream& out) const
     return out;
 }
 
+std::ostream& Book::print_sort_summary(std::ostream& out) const
+{
+    out
+        << "Id: " << id << " "
+        << "Title: " << title << " "
+        << "Author: " << author << " "
+        << "Year: " << year << " "
+        << "Rating: " << rating << " "
+        << std::endl;
+
+    return out;
+}
+
 std::ostream& Book::print_detailed(std::ostream& out) const
 {
     out
