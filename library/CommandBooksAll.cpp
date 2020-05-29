@@ -26,7 +26,7 @@ void CommandBooksAll::execute(std::istream& in, std::ostream& out, const std::ve
         return;
     }
     
-    const std::vector<Book*> books = bookStore->GetAll();
+    const std::vector<Book*> books = bookStore->getAll();
     if (books.empty())
     {
         out << "No results found" << std::endl;

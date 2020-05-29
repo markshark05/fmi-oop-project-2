@@ -25,15 +25,15 @@ public:
     BookStore& operator = (const BookStore& other);
     void swap(BookStore& a, BookStore& b);
 
-    void Add(const Book& book);
-    Book* GetById(unsigned int id);
-    std::vector<Book*> GetAll();
-    std::vector<Book*> GetFiltered(filterFunc filterF);
-    std::vector<Book*> GetSorted(sortFunc sortF);
+    void add(const Book& book);
+    Book* getById(unsigned int id);
+    std::vector<Book*> getAll();
+    std::vector<Book*> getFiltered(filterFunc filterF);
+    std::vector<Book*> getSorted(sortFunc sortF);
     bool RemoveById(unsigned int id);
 
     bool load(const std::string& fileName);
     bool save(const std::string& fileName);
 private:
-    std::vector<Book*> Query(filterFunc filterF, sortFunc sortF);
+    std::vector<Book*> query(filterFunc filterF, sortFunc sortF);
 };

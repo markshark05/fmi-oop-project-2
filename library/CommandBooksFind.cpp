@@ -56,7 +56,7 @@ void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::v
         return;
     }
 
-    std::vector<Book*> books = bookStore->GetFiltered(filter_f[option]);
+    std::vector<Book*> books = bookStore->getFiltered(filter_f[option]);
     if (books.empty())
     {
         out << "No results found." << std::endl;

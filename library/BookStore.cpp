@@ -41,7 +41,7 @@ void BookStore::swap(BookStore& a, BookStore& b)
     std::swap(a.books, b.books);
 }
 
-void BookStore::Add(const Book& book)
+void BookStore::add(const Book& book)
 {
     Book* newBook = new Book(book);
     newBook->setId(auto_increment++);
@@ -49,7 +49,7 @@ void BookStore::Add(const Book& book)
     books.push_back(newBook);
 }
 
-Book* BookStore::GetById(unsigned int id)
+Book* BookStore::getById(unsigned int id)
 {
     for (Book* const& b : books)
     {
@@ -62,19 +62,19 @@ Book* BookStore::GetById(unsigned int id)
     return nullptr;
 }
 
-std::vector<Book*> BookStore::GetAll()
+std::vector<Book*> BookStore::getAll()
 {
     return books;
 }
 
-std::vector<Book*> BookStore::GetFiltered(filterFunc filterF)
+std::vector<Book*> BookStore::getFiltered(filterFunc filterF)
 {
-    return Query(filterF, nullptr);
+    return query(filterF, nullptr);
 }
 
-std::vector<Book*> BookStore::GetSorted(sortFunc sortF)
+std::vector<Book*> BookStore::getSorted(sortFunc sortF)
 {
-    return Query(nullptr, sortF);
+    return query(nullptr, sortF);
 }
 
 bool BookStore::RemoveById(unsigned int id)
@@ -106,7 +106,7 @@ bool BookStore::load(const std::string& fileName)
     while (reader->readCsvBook(file, book))
     {
         auto_increment = book.getId();
-        Add(book);
+        add(book);
     }
 
     return true;
@@ -128,7 +128,7 @@ bool BookStore::save(const std::string& fileName)
     return true;
 }
 
-std::vector<Book*> BookStore::Query(filterFunc filterF, sortFunc sortF)
+std::vector<Book*> BookStore::query(filterFunc filterF, sortFunc sortF)
 {
     std::vector<Book*> filtered;
     for (auto b : books)

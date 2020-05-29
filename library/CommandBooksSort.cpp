@@ -75,7 +75,7 @@ void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::v
         return;
     }
 
-    std::vector<Book*> books = bookStore->GetSorted(sort_f[option]);
+    std::vector<Book*> books = bookStore->getSorted(sort_f[option]);
     if (books.empty())
     {
         out << "No results found." << std::endl;

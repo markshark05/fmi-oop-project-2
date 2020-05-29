@@ -28,7 +28,7 @@ void CommandBooksInfo::execute(std::istream& in, std::ostream& out, const std::v
 
     unsigned int id = std::stoi(args[0]);
 
-    Book* b = bookStore->GetById(id);
+    Book* b = bookStore->getById(id);
     if (!b)
     {
         out << "No results found" << std::endl;

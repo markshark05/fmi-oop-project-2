@@ -7,7 +7,7 @@ UserStore::UserStore(UserCSVReader& reader, UserCSVWriter& writer) :
 {
 }
 
-void UserStore::Add(const User& user)
+void UserStore::add(const User& user)
 {
     if (!getByUsername(user.getUsername()))
     {
@@ -28,7 +28,7 @@ User* UserStore::getByUsername(const std::string& username)
     return nullptr;
 }
 
-void UserStore::RemoveByUsername(const std::string& username)
+void UserStore::removeByUsername(const std::string& username)
 {
     for (auto i = users.begin(); i != users.end(); i++)
     {
@@ -54,7 +54,7 @@ bool UserStore::load(const std::string& fileName)
     User user;
     while (reader->readCSVUser(file, user))
     {
-        Add(user);
+        add(user);
     }
 
     if (users.empty())
@@ -64,7 +64,7 @@ bool UserStore::load(const std::string& fileName)
         defaultUser.setPassword("i<3c++");
         defaultUser.setIsAdmin(true);
 
-        Add(defaultUser);
+        add(defaultUser);
     }
 
     return true;

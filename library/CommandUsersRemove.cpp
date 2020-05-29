@@ -17,7 +17,7 @@ void CommandUsersRemove::execute(std::istream& in, std::ostream& out, const std:
 {
     const std::string& username = args[0];
 
-    userStore->RemoveByUsername(username);
+    userStore->removeByUsername(username);
     if (userStore->save(*fileCtx->getActiveFile()))
     {
         out << "User removed." << std::endl;

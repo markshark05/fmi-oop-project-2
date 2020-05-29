@@ -46,5 +46,5 @@ void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::ve
     ratingstr >> rating;
     book.setRating(rating);
 
-    bookStore->Add(book);
+    bookStore->add(book);
 }
