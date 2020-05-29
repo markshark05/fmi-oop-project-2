@@ -7,12 +7,15 @@ UserStore::UserStore(UserCSVReader& reader, UserCSVWriter& writer) :
 {
 }
 
-void UserStore::add(const User& user)
+bool UserStore::add(const User& user)
 {
     if (!getByUsername(user.getUsername()))
     {
         users.push_back(new User(user));
+        return true;
     }
+
+    return false;
 }
 
 User* UserStore::getByUsername(const std::string& username)
@@ -28,16 +31,18 @@ User* UserStore::getByUsername(const std::string& username)
     return nullptr;
 }
 
-void UserStore::removeByUsername(const std::string& username)
+bool UserStore::removeByUsername(const std::string& username)
 {
     for (auto i = users.begin(); i != users.end(); i++)
     {
         if ((*i)->getUsername() == username)
         {
             users.erase(i);
-            return;
+            return true;
         }
     }
+
+    return false;
 }
 
 bool UserStore::load(const std::string& fileName)

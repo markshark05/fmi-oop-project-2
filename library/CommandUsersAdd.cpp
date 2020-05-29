@@ -22,8 +22,8 @@ void CommandUsersAdd::execute(std::istream& in, std::ostream& out, const std::ve
     user.setUsername(username);
     user.setPassword(password);
 
-    userStore->add(user);
-    if (userStore->save(*fileCtx->getActiveFile()))
+    if (userStore->add(user) && 
+        userStore->save(*fileCtx->getActiveFile()))
     {
         out << "User added and saved." << std::endl;
         return;

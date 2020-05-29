@@ -32,6 +32,10 @@ int main()
     CSVReader csvReader;
     CSVWriter csvWriter;
 
+    FileContext bookFileCtx;
+    FileContext userFileCtx{ users_file };
+    AuthorizeContext authCtx;
+
     BookCSVReader bookReader{ csvReader };
     BookCSVWriter bookWriter{ csvWriter };
     BookStore bookStore{ bookReader, bookWriter };
@@ -39,11 +43,7 @@ int main()
     UserCSVReader userReader{ csvReader };
     UserCSVWriter userWriter{ csvWriter };
     UserStore userStore{ userReader, userWriter };
-    userStore.load(users_file);
-
-    FileContext bookFileCtx;
-    FileContext userFileCtx{ users_file };
-    AuthorizeContext authCtx;
+    userStore.load(*userFileCtx.getActiveFile());
 
     std::vector<Command*> commands
     {

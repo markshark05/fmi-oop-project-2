@@ -17,10 +17,10 @@ void CommandUsersRemove::execute(std::istream& in, std::ostream& out, const std:
 {
     const std::string& username = args[0];
 
-    userStore->removeByUsername(username);
-    if (userStore->save(*fileCtx->getActiveFile()))
+    if (userStore->removeByUsername(username) &&
+        userStore->save(*fileCtx->getActiveFile()))
     {
-        out << "User removed." << std::endl;
+        out << "User removed and saved." << std::endl;
         return;
     }
 

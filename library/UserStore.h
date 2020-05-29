@@ -14,9 +14,9 @@ private:
 public:
     UserStore(UserCSVReader& reader, UserCSVWriter& writer);
     
-    void add(const User& user);
+    bool add(const User& user);
     User* getByUsername(const std::string& username);
-    void removeByUsername(const std::string& username);
+    bool removeByUsername(const std::string& username);
 
     bool load(const std::string& fileName);
     bool save(const std::string& fileName);
