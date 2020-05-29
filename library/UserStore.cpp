@@ -7,6 +7,36 @@ UserStore::UserStore(UserCSVReader& reader, UserCSVWriter& writer) :
 {
 }
 
+UserStore::UserStore(const UserStore& other) :
+    reader(other.reader),
+    writer(other.writer)
+{
+    users.reserve(other.users.size());
+    for (User* const& u : other.users)
+    {
+        users.push_back(new User(*u));
+    }
+}
+
+UserStore::~UserStore()
+{
+    for (User*& u : users) delete u;
+}
+
+UserStore& UserStore::operator=(const UserStore& other)
+{
+    UserStore copy{ other };
+    swap(*this, copy);
+    return *this;
+}
+
+void UserStore::swap(UserStore& a, UserStore& b)
+{
+    std::swap(a.reader, b.reader);
+    std::swap(a.writer, b.writer);
+    std::swap(a.users, b.users);
+}
+
 bool UserStore::add(const User& user)
 {
     if (!getByUsername(user.getUsername()))
