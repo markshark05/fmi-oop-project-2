@@ -1,5 +1,6 @@
 #include "Book.h"
 
+
 std::string Book::getAuthor() const
 {
     return author;

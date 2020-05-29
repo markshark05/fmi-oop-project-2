@@ -1,15 +1,15 @@
 #include <sstream>
-#include "LibraryCommandLoop.h"
+#include "CommandLoop.h"
 
-LibraryCommandLoop::LibraryCommandLoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands) :
-    in(in),
-    out(out),
+CommandLoop::CommandLoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands) :
+    in(&in),
+    out(&out),
     running(false),
-    commands(commands)
+    commands(&commands)
 {
 }
 
-void LibraryCommandLoop::Start()
+void CommandLoop::start()
 {
     if (!running)
     {
@@ -18,18 +18,21 @@ void LibraryCommandLoop::Start()
     }
 }
 
-void LibraryCommandLoop::Stop()
+void CommandLoop::stop()
 {
     running = false;
 }
 
-const std::vector<Command*>& LibraryCommandLoop::getCommands() const
+const std::vector<Command*>& CommandLoop::getCommands() const
 {
-    return commands;
+    return *commands;
 }
 
-void LibraryCommandLoop::loop()
+void CommandLoop::loop()
 {
+    std::istream& in{ *this->in };
+    std::ostream& out{ *this->out };
+
     while (running)
     {
         out << "> ";
@@ -41,7 +44,7 @@ void LibraryCommandLoop::loop()
         if (linestream >> commandStr)
         {
             Command* command = nullptr;
-            for (Command* const& c : commands)
+            for (Command* const& c : *commands)
             {
                 if (c->getName() == commandStr)
                 {
@@ -52,7 +55,7 @@ void LibraryCommandLoop::loop()
             if (command)
             {
                 std::vector<std::string> args = parseArgs(linestream);
-                if (args.size() < command->getMinArgsCount())
+                if ((int)args.size() < command->getMinArgsCount())
                 {
                     out << "Expected " << command->getMinArgsCount() << " argument(s) but got " << args.size() << "." << std::endl;
                 }
@@ -73,7 +76,7 @@ void LibraryCommandLoop::loop()
     }
 }
 
-std::vector<std::string> LibraryCommandLoop::parseArgs(std::istringstream& linestream)
+std::vector<std::string> CommandLoop::parseArgs(std::istringstream& linestream)
 {
     std::vector<std::string> args;
     std::string token;

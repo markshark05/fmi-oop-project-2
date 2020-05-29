@@ -4,9 +4,9 @@
 
 class BookCSVWriter
 {
+private:
+    CSVWriter* csvWriter;
 public:
     BookCSVWriter(CSVWriter& csvWriter);
     void writeCSVBook(std::ostream& out, const Book& book);
-private:
-    CSVWriter& csvWriter;
 };

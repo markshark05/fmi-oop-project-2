@@ -1,7 +1,7 @@
 #include "BookCSVWriter.h"
 
 BookCSVWriter::BookCSVWriter(CSVWriter& csvWriter) :
-    csvWriter(csvWriter)
+    csvWriter(&csvWriter)
 {
 }
 
@@ -24,5 +24,5 @@ void BookCSVWriter::writeCSVBook(std::ostream& out, const Book& book)
     }
     fields.push_back(tags_str);
 
-    csvWriter.writeCSVRow(out, fields);
+    csvWriter->writeCSVRow(out, fields);
 }

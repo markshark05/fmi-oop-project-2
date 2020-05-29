@@ -2,9 +2,13 @@
 
 #include "BookStore.h"
 #include "UserStore.h"
+
 #include "AuthorizeContext.h"
-#include "LibraryCommandLoop.h"
+#include "FileContext.h"
+
+#include "CommandLoop.h"
 #include "Command.h"
+
 #include "CommandBooksAdd.h"
 #include "CommandBooksAll.h"
 #include "CommandBooksFind.h"
@@ -20,7 +24,6 @@
 #include "CommandSaveAs.h"
 #include "CommandUsersAdd.h"
 #include "CommandUsersRemove.h"
-#include "FileContext.h"
 
 int main()
 {
@@ -57,12 +60,12 @@ int main()
         new CommandUsersRemove{ authCtx, userStore},
     };
 
-    LibraryCommandLoop cmdloop{ std::cin, std::cout, commands };
+    CommandLoop cmdloop{ std::cin, std::cout, commands };
 
     commands.push_back(new CommandHelp{ cmdloop });
     commands.push_back(new CommandExit{ cmdloop });
 
-    cmdloop.Start();
+    cmdloop.start();
 
     return 0;
 }

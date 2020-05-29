@@ -4,6 +4,10 @@
 
 class User
 {
+private:
+    std::string username;
+    std::string password;
+    bool isAdmin;
 public:
     User();
     std::string getUsername() const;
@@ -14,8 +18,4 @@ public:
 
     bool getIsAdmin() const;
     void setIsAdmin(bool value);
-private:
-    std::string username;
-    std::string password;
-    bool isAdmin;
 };

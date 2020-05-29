@@ -1,7 +1,7 @@
 #include "BookCsvReader.h"
 
 BookCsvReader::BookCsvReader(CSVReader& csvReader) :
-    csvReader(csvReader)
+    csvReader(&csvReader)
 {
 }
 
@@ -11,7 +11,7 @@ bool BookCsvReader::readCsvBook(std::istream& in, Book& book)
     std::getline(in, row);
     std::istringstream row_stream{ row };
 
-    std::vector<std::string> fields = csvReader.readCSVRow(row_stream);
+    std::vector<std::string> fields = csvReader->readCSVRow(row_stream);
     if (fields.size() != 8) return false;
 
     int i{ 0 };

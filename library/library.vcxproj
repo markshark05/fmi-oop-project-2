@@ -171,7 +171,7 @@
     <ClCompile Include="CSVReader.cpp" />
     <ClCompile Include="CSVWriter.cpp" />
     <ClCompile Include="FileContext.cpp" />
-    <ClCompile Include="LibraryCommandLoop.cpp" />
+    <ClCompile Include="CommandLoop.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserStore.cpp" />
@@ -201,9 +201,9 @@
     <ClInclude Include="CSVReader.h" />
     <ClInclude Include="CSVWriter.h" />
     <ClInclude Include="FileContext.h" />
-    <ClInclude Include="ICommands.h" />
-    <ClInclude Include="IStoppable.h" />
-    <ClInclude Include="LibraryCommandLoop.h" />
+    <ClInclude Include="ICommandsLoop.h" />
+    <ClInclude Include="IStoppableLoop.h" />
+    <ClInclude Include="CommandLoop.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserStore.h" />
   </ItemGroup>

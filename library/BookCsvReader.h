@@ -4,9 +4,9 @@
 
 class BookCsvReader
 {
+private:
+    CSVReader* csvReader;
 public:
     BookCsvReader(CSVReader& csvReader);
     bool readCsvBook(std::istream& in, Book& book);
-private:
-    CSVReader& csvReader;
 };

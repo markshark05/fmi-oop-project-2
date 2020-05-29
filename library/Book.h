@@ -6,6 +6,15 @@
 
 class Book
 {
+private:
+    std::string author;
+    std::string title;
+    std::string genre;
+    std::string description;
+    std::vector<std::string> tags;
+    int year;
+    float rating;
+    unsigned int id;
 public:
     std::string getAuthor() const;
     void setAuthor(const std::string& value);
@@ -33,13 +42,4 @@ public:
 
     std::ostream& print_summary(std::ostream& out) const;
     std::ostream& print_detailed(std::ostream& out) const;
-private:
-    std::string author;
-    std::string title;
-    std::string genre;
-    std::string description;
-    int year;
-    std::vector<std::string> tags;
-    float rating;
-    unsigned int id;
 };

@@ -1,6 +1,6 @@
 #include "CommandHelp.h"
 
-CommandHelp::CommandHelp(const ICommands& loop) :
+CommandHelp::CommandHelp(const ICommandsLoop& loop) :
     Command("help", 0, "prints this information"),
     _loop(loop)
 {
