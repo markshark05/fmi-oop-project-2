@@ -157,6 +157,7 @@
     <ClCompile Include="CommandBooksAll.cpp" />
     <ClCompile Include="CommandBooksFind.cpp" />
     <ClCompile Include="CommandBooksInfo.cpp" />
+    <ClCompile Include="CommandBooksRemove.cpp" />
     <ClCompile Include="CommandBooksSort.cpp" />
     <ClCompile Include="CommandClose.cpp" />
     <ClCompile Include="CommandExit.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="CommandBooksAll.h" />
     <ClInclude Include="CommandBooksFind.h" />
     <ClInclude Include="CommandBooksInfo.h" />
+    <ClInclude Include="CommandBooksRemove.h" />
     <ClInclude Include="CommandBooksSort.h" />
     <ClInclude Include="CommandClose.h" />
     <ClInclude Include="CommandExit.h" />

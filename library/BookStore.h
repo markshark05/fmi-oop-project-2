@@ -30,7 +30,7 @@ public:
     std::vector<Book*> GetAll();
     std::vector<Book*> GetFiltered(filterFunc filterF);
     std::vector<Book*> GetSorted(sortFunc sortF);
-    void RemoveById(unsigned int id);
+    bool RemoveById(unsigned int id);
 
     bool load(const std::string& fileName);
     bool save(const std::string& fileName);

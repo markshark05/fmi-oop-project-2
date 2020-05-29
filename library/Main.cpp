@@ -13,6 +13,7 @@
 #include "CommandBooksAll.h"
 #include "CommandBooksFind.h"
 #include "CommandBooksInfo.h"
+#include "CommandBooksRemove.h"
 #include "CommandBooksSort.h"
 #include "CommandClose.h"
 #include "CommandExit.h"
@@ -54,6 +55,7 @@ int main()
         new CommandBooksAll{ authCtx, bookFileCtx, bookStore },
         new CommandBooksFind{ authCtx, bookFileCtx, bookStore },
         new CommandBooksInfo{ authCtx, bookFileCtx, bookStore },
+        new CommandBooksRemove{ authCtx, bookFileCtx, bookStore },
         new CommandBooksSort{ authCtx, bookFileCtx, bookStore },
 
         new CommandUsersAdd{ authCtx, userStore},

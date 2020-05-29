@@ -77,16 +77,17 @@ std::vector<Book*> BookStore::GetSorted(sortFunc sortF)
     return Query(nullptr, sortF);
 }
 
-void BookStore::RemoveById(unsigned int id)
+bool BookStore::RemoveById(unsigned int id)
 {
     for (auto i = books.begin(); i != books.end(); i++)
     {
         if ((*i)->getId() == id)
         {
             books.erase(i);
-            return;
+            return true;
         }
     }
+    return false;
 }
 
 bool BookStore::load(const std::string& fileName)
