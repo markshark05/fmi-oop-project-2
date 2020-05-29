@@ -93,13 +93,13 @@
     <ClCompile Include="FileContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CommandLoop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BookCSVReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommandBooksRemove.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLILoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -179,9 +179,6 @@
     <ClInclude Include="FileContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandLoop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IStoppableLoop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -192,6 +189,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CommandBooksRemove.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLILoop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

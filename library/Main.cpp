@@ -6,8 +6,7 @@
 #include "AuthorizeContext.h"
 #include "FileContext.h"
 
-#include "CommandLoop.h"
-#include "Command.h"
+#include "CLILoop.h"
 
 #include "CommandBooksAdd.h"
 #include "CommandBooksAll.h"
@@ -62,7 +61,7 @@ int main()
         new CommandUsersRemove{ authCtx, userStore},
     };
 
-    CommandLoop cmdloop{ std::cin, std::cout, commands };
+    CLILoop cmdloop{ std::cin, std::cout, commands };
 
     commands.push_back(new CommandHelp{ cmdloop });
     commands.push_back(new CommandExit{ cmdloop });

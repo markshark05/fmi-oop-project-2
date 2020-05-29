@@ -7,7 +7,7 @@
 #include "IStoppableLoop.h"
 #include "ICommandsLoop.h"
 
-class CommandLoop :
+class CLILoop :
     public IStoppableLoop,
     public ICommandsLoop
 {
@@ -17,7 +17,7 @@ private:
     std::vector<Command*>* commands;
     bool running;
 public:
-    CommandLoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands);
+    CLILoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands);
     void start();
     void stop();
     const std::vector<Command*>& getCommands() const;

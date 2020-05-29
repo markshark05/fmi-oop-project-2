@@ -1,7 +1,7 @@
 #include <sstream>
-#include "CommandLoop.h"
+#include "CLILoop.h"
 
-CommandLoop::CommandLoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands) :
+CLILoop::CLILoop(std::istream& in, std::ostream& out, std::vector<Command*>& commands) :
     in(&in),
     out(&out),
     running(false),
@@ -9,7 +9,7 @@ CommandLoop::CommandLoop(std::istream& in, std::ostream& out, std::vector<Comman
 {
 }
 
-void CommandLoop::start()
+void CLILoop::start()
 {
     if (!running)
     {
@@ -18,17 +18,17 @@ void CommandLoop::start()
     }
 }
 
-void CommandLoop::stop()
+void CLILoop::stop()
 {
     running = false;
 }
 
-const std::vector<Command*>& CommandLoop::getCommands() const
+const std::vector<Command*>& CLILoop::getCommands() const
 {
     return *commands;
 }
 
-void CommandLoop::loop()
+void CLILoop::loop()
 {
     std::istream& in{ *this->in };
     std::ostream& out{ *this->out };
@@ -80,7 +80,7 @@ void CommandLoop::loop()
     }
 }
 
-std::vector<std::string> CommandLoop::parseArgs(std::istringstream& linestream)
+std::vector<std::string> CLILoop::parseArgs(std::istringstream& linestream)
 {
     std::vector<std::string> args;
     std::string token;
