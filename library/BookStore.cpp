@@ -105,12 +105,8 @@ bool BookStore::load(const std::string& fileName)
     Book book;
     while (reader->readCsvBook(file, book))
     {
-        books.push_back(new Book(book));
-    }
-
-    if (!books.empty())
-    {
-        auto_increment = books.back()->getId() + 1;
+        auto_increment = book.getId();
+        Add(book);
     }
 
     return true;
