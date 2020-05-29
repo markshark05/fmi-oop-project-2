@@ -2,7 +2,7 @@
 #include <fstream>
 #include "BookStore.h"
 
-BookStore::BookStore(BookCsvReader& reader, BookCSVWriter& writer) :
+BookStore::BookStore(BookCSVReader& reader, BookCSVWriter& writer) :
     auto_increment(AUTO_INCREMENT_DEFAULT),
     reader(&reader),
     writer(&writer)
@@ -109,7 +109,7 @@ bool BookStore::load(const std::string& fileName)
 
     if (!books.empty())
     {
-        auto_increment = books.back()->getId();
+        auto_increment = books.back()->getId() + 1;
     }
 
     return true;
@@ -136,7 +136,7 @@ std::vector<Book*> BookStore::Query(filterFunc filterF, sortFunc sortF)
     std::vector<Book*> filtered;
     for (auto b : books)
     {
-        if (!filterF || filterF(*b))
+        if (!filterF || filterF(b))
         {
             filtered.push_back(b);
         }

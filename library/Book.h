@@ -16,6 +16,8 @@ private:
     float rating;
     unsigned int id;
 public:
+    Book();
+
     std::string getAuthor() const;
     void setAuthor(const std::string& value);
 

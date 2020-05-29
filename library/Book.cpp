@@ -1,6 +1,13 @@
 #include "Book.h"
 
 
+Book::Book() :
+    id(0),
+    rating(0),
+    year(1970)
+{
+}
+
 std::string Book::getAuthor() const
 {
     return author;

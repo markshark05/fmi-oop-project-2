@@ -8,12 +8,10 @@ class CSVReader
 private:
     enum class CSVState
     {
-        UnquotedField,
-        QuotedField,
+        Initial,
+        Quoted,
         QuotedQuote
     };
 public:
-    std::vector<std::vector<std::string>> readCSV(std::istream& in);
-    std::vector<std::string> readCSVRow(std::istream& row);
+    std::vector<std::string> readCSVRow(std::istream& in);
 };
-

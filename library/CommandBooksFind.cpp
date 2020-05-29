@@ -27,19 +27,19 @@ void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::v
 
     std::map<std::string, BookStore::filterFunc> filter_f
     {
-        { "title", [option_string](const Book& b)
+        { "title", [option_string](Book* const& b)
             {
-                return b.getTitle() == option_string;
+                return b->getTitle() == option_string;
             }
         },
-        { "author", [option_string](const Book& b)
+        { "author", [option_string](Book* const& b)
             {
-                return b.getAuthor() == option_string;
+                return b->getAuthor() == option_string;
             }
         },
-        { "tag", [option_string](const Book& b)
+        { "tag", [option_string](Book* const& b)
             {
-                std::vector<std::string> tags = b.getTags();
+                std::vector<std::string> tags = b->getTags();
                 return std::find(tags.begin(), tags.end(), option_string) != tags.end();
             }
         }

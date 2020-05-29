@@ -149,7 +149,7 @@
   <ItemGroup>
     <ClCompile Include="AuthorizeContext.cpp" />
     <ClCompile Include="Book.cpp" />
-    <ClCompile Include="BookCsvReader.cpp" />
+    <ClCompile Include="BookCSVReader.cpp" />
     <ClCompile Include="BookCSVWriter.cpp" />
     <ClCompile Include="BookStore.cpp" />
     <ClCompile Include="Command.cpp" />
@@ -179,7 +179,7 @@
   <ItemGroup>
     <ClInclude Include="AuthorizeContext.h" />
     <ClInclude Include="Book.h" />
-    <ClInclude Include="BookCsvReader.h" />
+    <ClInclude Include="BookCSVReader.h" />
     <ClInclude Include="BookCSVWriter.h" />
     <ClInclude Include="BookStore.h" />
     <ClInclude Include="Command.h" />

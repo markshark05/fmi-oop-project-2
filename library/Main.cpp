@@ -30,7 +30,7 @@ int main()
     CSVReader csvReader;
     CSVWriter csvWriter;
 
-    BookCsvReader bookReader{ csvReader };
+    BookCSVReader bookReader{ csvReader };
     BookCSVWriter bookWriter{ csvWriter };
     BookStore bookStore{ bookReader, bookWriter };
 

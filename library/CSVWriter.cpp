@@ -1,14 +1,5 @@
 #include "CSVWriter.h"
 
-void CSVWriter::writeCSV(std::ostream& out, const std::vector<std::vector<std::string>>& csv)
-{
-    for (const std::vector<std::string>& row : csv)
-    {
-        writeCSVRow(out, row);
-        out << std::endl;
-    }
-}
-
 void CSVWriter::writeCSVRow(std::ostream& out, const std::vector<std::string>& csvRow)
 {
     bool firstField = true;
@@ -38,4 +29,6 @@ void CSVWriter::writeCSVRow(std::ostream& out, const std::vector<std::string>& c
         }
         if (quoted) out << '"';
     }
+
+    out << std::endl;
 }

@@ -1,42 +1,32 @@
 #include "CSVReader.h"
 
-std::vector<std::vector<std::string>> CSVReader::readCSV(std::istream& in)
+std::vector<std::string> CSVReader::readCSVRow(std::istream& in)
 {
-    std::vector<std::vector<std::string>> table;
     std::string row;
-    while (std::getline(in, row))
-    {
-        std::istringstream rowStream{ row };
-        std::vector<std::string> fields = readCSVRow(rowStream);
-        table.push_back(fields);
-    }
+    std::getline(in, row);
+    std::istringstream rowstream{ row };
 
-    return table;
-}
-
-std::vector<std::string> CSVReader::readCSVRow(std::istream& rowstream)
-{
-    CSVState state = CSVState::UnquotedField;
+    CSVState state = CSVState::Initial;
     std::vector<std::string> fields{ "" };
-    unsigned int field_i = 0;
+    int field_i = 0;
     char c;
     while(rowstream.get(c))
     {
         switch (state)
         {
-        case CSVState::UnquotedField:
+        case CSVState::Initial:
             switch (c)
             {
             case ',':
                 fields.push_back(""); field_i++;
                 break;
-            case '"': state = CSVState::QuotedField;
+            case '"': state = CSVState::Quoted;
                 break;
             default: fields[field_i].push_back(c);
                 break;
             }
             break;
-        case CSVState::QuotedField:
+        case CSVState::Quoted:
             switch (c)
             {
             case '"': state = CSVState::QuotedQuote;
@@ -50,14 +40,14 @@ std::vector<std::string> CSVReader::readCSVRow(std::istream& rowstream)
             {
             case ',':
                 fields.push_back(""); field_i++;
-                state = CSVState::UnquotedField;
+                state = CSVState::Initial;
                 break;
             case '"':
                 fields[field_i].push_back('"');
-                state = CSVState::QuotedField;
+                state = CSVState::Quoted;
                 break;
             default:
-                state = CSVState::UnquotedField;
+                state = CSVState::Initial;
                 break;
             }
             break;

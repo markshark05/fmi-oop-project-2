@@ -2,7 +2,7 @@
 #include <vector>
 #include "Book.h"
 #include <functional>
-#include "BookCsvReader.h"
+#include "BookCSVReader.h"
 #include "BookCSVWriter.h"
 
 class BookStore
@@ -10,16 +10,16 @@ class BookStore
 private:
     unsigned int AUTO_INCREMENT_DEFAULT{ 1 };
     
-    BookCsvReader* reader;
+    BookCSVReader* reader;
     BookCSVWriter* writer;
 
     unsigned int auto_increment;
     std::vector<Book*> books;
 public:
-    using filterFunc = std::function<bool(const Book&)>;
+    using filterFunc = std::function<bool(Book* const&)>;
     using sortFunc = std::function<bool(Book* const&, Book* const&)>;
 
-    BookStore(BookCsvReader& reader, BookCSVWriter& writer);
+    BookStore(BookCSVReader& reader, BookCSVWriter& writer);
     BookStore(const BookStore& other);
     ~BookStore();
     BookStore& operator = (const BookStore& other);

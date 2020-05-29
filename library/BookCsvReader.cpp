@@ -1,18 +1,14 @@
-#include "BookCsvReader.h"
+#include "BookCSVReader.h"
 
-BookCsvReader::BookCsvReader(CSVReader& csvReader) :
+BookCSVReader::BookCSVReader(CSVReader& csvReader) :
     csvReader(&csvReader)
 {
 }
 
-bool BookCsvReader::readCsvBook(std::istream& in, Book& book)
+bool BookCSVReader::readCsvBook(std::istream& in, Book& book)
 {
-    std::string row;
-    std::getline(in, row);
-    std::istringstream row_stream{ row };
-
-    std::vector<std::string> fields = csvReader->readCSVRow(row_stream);
-    if (fields.size() != 8) return false;
+    std::vector<std::string> fields = csvReader->readCSVRow(in);
+    if (fields.size() != 0 && fields.size() != 8) return false;
 
     int i{ 0 };
     book.setId(std::stoi(fields[i++]));

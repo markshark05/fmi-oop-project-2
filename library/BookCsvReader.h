@@ -2,11 +2,11 @@
 #include "CSVReader.h"
 #include "Book.h"
 
-class BookCsvReader
+class BookCSVReader
 {
 private:
     CSVReader* csvReader;
 public:
-    BookCsvReader(CSVReader& csvReader);
+    BookCSVReader(CSVReader& csvReader);
     bool readCsvBook(std::istream& in, Book& book);
 };
