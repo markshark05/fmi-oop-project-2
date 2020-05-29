@@ -1,7 +1,7 @@
 #include "CommandUsersRemove.h"
 
 CommandUsersRemove::CommandUsersRemove(AuthorizeContext const& auth, UserStore& userStore) :
-    Command("users_remove", 1, "users_remove <user>"),
+    Command("users_remove", 1, "users remove <user> - removes an existing user"),
     auth(auth),
     userStore(userStore)
 {

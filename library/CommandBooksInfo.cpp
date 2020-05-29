@@ -1,7 +1,7 @@
 #include "CommandBooksInfo.h"
 
 CommandBooksInfo::CommandBooksInfo(AuthorizeContext const& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_info", 1, "show details for a book"),
+    Command("books_info", 1, "boosk info <id> - shows info about a book"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
@@ -26,7 +26,7 @@ void CommandBooksInfo::execute(std::istream& in, std::ostream& out, const std::v
     Book* b = bookStore->GetById(id);
     if (!b)
     {
-        out << "No results found";
+        out << "No results found" << std::endl;
         return;
     }
 

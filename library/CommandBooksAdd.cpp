@@ -2,7 +2,7 @@
 #include "CommandBooksAdd.h"
 
 CommandBooksAdd::CommandBooksAdd(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_add", 0, "books_add <interactive>"),
+    Command("books_add", 0, "books add - interactively adds a book"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)

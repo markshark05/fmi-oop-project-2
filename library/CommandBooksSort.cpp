@@ -2,7 +2,7 @@
 #include "CommandBooksSort.h"
 
 CommandBooksSort::CommandBooksSort(AuthorizeContext const& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_sort", 1, "books sort <option> [asc | desc]"),
+    Command("books_sort", 1, "books sort <option> [asc | desc] - lists books sorted by <option>"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
@@ -66,7 +66,7 @@ void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::v
 
     if (asc_desc != "asc" && asc_desc != "desc")
     {
-        out << "Invalid sort modifier";
+        out << "Invalid sort modifier" << std::endl;
         return;
     }
 

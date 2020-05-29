@@ -1,7 +1,7 @@
 #include "CommandOpen.h"
 
 CommandOpen::CommandOpen(FileContext& fileCtx, BookStore& bookStore) :
-    Command("open", 1, "opens <file>"),
+    Command("open", 1, "open <file> - loads <file> creating new one if does not exist"),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
 {

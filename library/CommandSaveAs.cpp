@@ -1,7 +1,7 @@
 #include "CommandSaveAs.h"
 
 CommandSaveAs::CommandSaveAs(FileContext& fileCtx, BookStore& bookStore) :
-    Command("saveas", 1, "saves the currently open file in <file>"),
+    Command("saveas", 1, "saveas <file> - saves the currently open file in <file> and switches to it"),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
 {

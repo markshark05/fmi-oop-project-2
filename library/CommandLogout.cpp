@@ -1,7 +1,7 @@
 #include "CommandLogout.h"
 
 CommandLogout::CommandLogout(AuthorizeContext& auth) :
-    Command("logout", 0, "logout"),
+    Command("logout", 0, "logout - loggs out current user"),
     auth(auth)
 {
 }

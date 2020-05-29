@@ -1,7 +1,7 @@
 #include "CommandBooksAll.h"
 
 CommandBooksAll::CommandBooksAll(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_all", 0, "lists all books"),
+    Command("books_all", 0, "books all - lists all books"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
@@ -24,7 +24,7 @@ void CommandBooksAll::execute(std::istream& in, std::ostream& out, const std::ve
     const std::vector<Book*> books = bookStore->GetAll();
     if (books.empty())
     {
-        out << "No results found";
+        out << "No results found" << std::endl;
         return;
     }
 

@@ -1,7 +1,7 @@
 #include "CommandUsersAdd.h"
 
 CommandUsersAdd::CommandUsersAdd(AuthorizeContext const& auth, UserStore& userStore) :
-    Command("users_add", 2, "users_add <user> <password>"),
+    Command("users_add", 2, "users add <user> <password> - adds a new user"),
     auth(auth),
     userStore(userStore)
 {

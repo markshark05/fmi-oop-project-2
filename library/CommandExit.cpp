@@ -1,7 +1,7 @@
 #include "CommandExit.h"
 
 CommandExit::CommandExit(IStoppableLoop& loop) :
-    Command("exit", 0, "exists the program"),
+    Command("exit", 0, "exit - exists the program"),
     _loop(loop)
 {
 }

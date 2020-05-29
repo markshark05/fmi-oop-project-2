@@ -1,7 +1,7 @@
 #include "CommandSave.h"
 
 CommandSave::CommandSave(FileContext& fileCtx, BookStore& bookStore) :
-    Command("save", 0, "saves the currently open file"),
+    Command("save", 0, "save - saves the currently open file"),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
 {

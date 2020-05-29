@@ -1,7 +1,7 @@
 #include "CommandClose.h"
 
 CommandClose::CommandClose(FileContext& fileCtx) :
-    Command("close", 0, "closes currently opened file"),
+    Command("close", 0, "close - closes currently opened file"),
     fileCtx(&fileCtx)
 {
 }

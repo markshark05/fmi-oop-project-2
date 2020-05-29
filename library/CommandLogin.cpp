@@ -1,7 +1,7 @@
 #include "CommandLogin.h"
 
 CommandLogin::CommandLogin(AuthorizeContext& auth, UserStore& userStore) :
-    Command("login", 0, "login [<username>] [<passowrd>]"),
+    Command("login", 0, "login [<username>] [<passowrd>] - loggs in existing user"),
     auth(auth),
     userStore(userStore)
 {
