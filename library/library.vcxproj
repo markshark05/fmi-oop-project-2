@@ -175,6 +175,8 @@
     <ClCompile Include="CLILoop.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserCSVReader.cpp" />
+    <ClCompile Include="UserCSVWriter.cpp" />
     <ClCompile Include="UserStore.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +209,8 @@
     <ClInclude Include="IStoppableLoop.h" />
     <ClInclude Include="CLILoop.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserCSVReader.h" />
+    <ClInclude Include="UserCSVWriter.h" />
     <ClInclude Include="UserStore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

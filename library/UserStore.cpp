@@ -1,13 +1,10 @@
+#include <fstream>
 #include "UserStore.h"
 
-UserStore::UserStore()
+UserStore::UserStore(UserCSVReader& reader, UserCSVWriter& writer) :
+    reader(&reader),
+    writer(&writer)
 {
-    User* defaultUser = new User;
-    defaultUser->setUsername("admin");
-    defaultUser->setPassword("i<3c++");
-    defaultUser->setIsAdmin(true);
-
-    this->users.push_back(defaultUser);
 }
 
 void UserStore::Add(const User& user)
@@ -41,4 +38,50 @@ void UserStore::RemoveByUsername(const std::string& username)
             return;
         }
     }
+}
+
+bool UserStore::load(const std::string& fileName)
+{
+    std::fstream file{ fileName, std::ios::in | std::ios::out | std::fstream::app };
+    if (!file)
+    {
+        return false;
+    }
+
+    for (User*& u : users) delete u;
+    users.clear();
+
+    User user;
+    while (reader->readCSVUser(file, user))
+    {
+        Add(user);
+    }
+
+    if (users.empty())
+    {
+        User defaultUser;
+        defaultUser.setUsername("admin");
+        defaultUser.setPassword("i<3c++");
+        defaultUser.setIsAdmin(true);
+
+        Add(defaultUser);
+    }
+
+    return true;
+}
+
+bool UserStore::save(const std::string& fileName)
+{
+    std::ofstream file{ fileName, std::ios::trunc };
+    if (!file)
+    {
+        return false;
+    }
+
+    for (User*& u : users)
+    {
+        writer->writeCSVUser(file, *u);
+    }
+
+    return true;
 }

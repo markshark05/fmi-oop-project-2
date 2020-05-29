@@ -1,8 +1,9 @@
 #include "CommandUsersRemove.h"
 
-CommandUsersRemove::CommandUsersRemove(AuthorizeContext const& auth, UserStore& userStore) :
+CommandUsersRemove::CommandUsersRemove(AuthorizeContext const& auth, const FileContext& fileCtx, UserStore& userStore) :
     Command("users_remove", 1, "users remove <user> - removes an existing user"),
     auth(&auth),
+    fileCtx(&fileCtx),
     userStore(&userStore)
 {
 }
@@ -17,4 +18,11 @@ void CommandUsersRemove::execute(std::istream& in, std::ostream& out, const std:
     const std::string& username = args[0];
 
     userStore->RemoveByUsername(username);
+    if (userStore->save(*fileCtx->getActiveFile()))
+    {
+        out << "User removed." << std::endl;
+        return;
+    }
+
+    out << "Failed to remove user." << std::endl;
 }

@@ -8,6 +8,7 @@ private:
     bool isSet;
 public:
     FileContext();
+    FileContext(const std::string& filename);
     const std::string* getActiveFile() const;
     void setActiveFile(const std::string& filename);
     void clearActiveFile();

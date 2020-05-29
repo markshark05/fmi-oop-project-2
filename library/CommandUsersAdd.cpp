@@ -1,8 +1,9 @@
 #include "CommandUsersAdd.h"
 
-CommandUsersAdd::CommandUsersAdd(AuthorizeContext const& auth, UserStore& userStore) :
+CommandUsersAdd::CommandUsersAdd(AuthorizeContext const& auth, const FileContext& fileCtx, UserStore& userStore) :
     Command("users_add", 2, "users add <user> <password> - adds a new user"),
     auth(&auth),
+    fileCtx(&fileCtx),
     userStore(&userStore)
 {
 }
@@ -22,4 +23,11 @@ void CommandUsersAdd::execute(std::istream& in, std::ostream& out, const std::ve
     user.setPassword(password);
 
     userStore->Add(user);
+    if (userStore->save(*fileCtx->getActiveFile()))
+    {
+        out << "User added and saved." << std::endl;
+        return;
+    }
+
+    out << "Failed to add user." << std::endl;
 }

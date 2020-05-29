@@ -5,6 +5,11 @@ FileContext::FileContext() :
 {
 }
 
+FileContext::FileContext(const std::string& filename)
+{
+    setActiveFile(filename);
+}
+
 const std::string* FileContext::getActiveFile() const
 {
     if (isSet) return &value;

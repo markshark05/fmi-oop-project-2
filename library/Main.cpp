@@ -27,6 +27,8 @@
 
 int main()
 {
+    std::string users_file{ "users.csv" };
+
     CSVReader csvReader;
     CSVWriter csvWriter;
 
@@ -34,10 +36,13 @@ int main()
     BookCSVWriter bookWriter{ csvWriter };
     BookStore bookStore{ bookReader, bookWriter };
 
-    UserStore userStore;
+    UserCSVReader userReader{ csvReader };
+    UserCSVWriter userWriter{ csvWriter };
+    UserStore userStore{ userReader, userWriter };
+    userStore.load(users_file);
 
     FileContext bookFileCtx;
-    FileContext userFileCtx;
+    FileContext userFileCtx{ users_file };
     AuthorizeContext authCtx;
 
     std::vector<Command*> commands
@@ -57,8 +62,8 @@ int main()
         new CommandBooksRemove{ authCtx, bookFileCtx, bookStore },
         new CommandBooksSort{ authCtx, bookFileCtx, bookStore },
 
-        new CommandUsersAdd{ authCtx, userStore},
-        new CommandUsersRemove{ authCtx, userStore},
+        new CommandUsersAdd{ authCtx, userFileCtx, userStore},
+        new CommandUsersRemove{ authCtx, userFileCtx, userStore},
     };
 
     CLILoop cmdloop{ std::cin, std::cout, commands };
