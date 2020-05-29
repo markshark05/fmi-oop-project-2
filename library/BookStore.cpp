@@ -1,9 +1,44 @@
 #include <algorithm>
+#include <fstream>
 #include "BookStore.h"
 
-BookStore::BookStore() :
-    auto_increment(1)
+BookStore::BookStore(BookCsvReader& reader, BookCSVWriter& writer) :
+    auto_increment(AUTO_INCREMENT_DEFAULT),
+    reader(&reader),
+    writer(&writer)
 {
+}
+
+BookStore::BookStore(const BookStore& other) :
+    auto_increment(other.auto_increment),
+    reader(other.reader),
+    writer(other.writer)
+{
+    books.reserve(other.books.size());
+    for (Book* const& b : other.books)
+    {
+        books.push_back(new Book(*b));
+    }
+}
+
+BookStore::~BookStore()
+{
+    for (Book*& b : books) delete b;
+}
+
+BookStore& BookStore::operator=(const BookStore& other)
+{
+    BookStore copy{ other };
+    swap(*this, other);
+    return *this;
+}
+
+void BookStore::swap(const BookStore& a, const BookStore& b)
+{
+    std::swap(a.reader, b.reader);
+    std::swap(a.writer, b.writer);
+    std::swap(a.auto_increment, b.auto_increment);
+    std::swap(a.books, b.books);
 }
 
 void BookStore::Add(const Book& book)
@@ -52,6 +87,48 @@ void BookStore::RemoveById(unsigned int id)
             return;
         }
     }
+}
+
+bool BookStore::load(const std::string& fileName)
+{
+    std::ifstream file{ fileName };
+    if (!file)
+    {
+        return false;
+    }
+
+    for (Book*& b : books) delete b;
+    books.clear();
+    auto_increment = AUTO_INCREMENT_DEFAULT;
+
+    Book book;
+    while (reader->readCsvBook(file, book))
+    {
+        books.push_back(new Book(book));
+    }
+
+    if (!books.empty())
+    {
+        auto_increment = books.back()->getId();
+    }
+
+    return true;
+}
+
+bool BookStore::save(const std::string& fileName)
+{
+    std::ofstream file{ fileName }; // ios::trunc by default
+    if (!file)
+    {
+        return false;
+    }
+
+    for (Book*& b : books)
+    {
+        writer->writeCSVBook(file, *b);
+    }
+
+    return true;
 }
 
 std::vector<Book*> BookStore::Query(filterFunc filterF, sortFunc sortF)

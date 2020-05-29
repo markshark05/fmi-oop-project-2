@@ -20,11 +20,20 @@
 #include "CommandSaveAs.h"
 #include "CommandUsersAdd.h"
 #include "CommandUsersRemove.h"
+#include "FileContext.h"
 
 int main()
 {
-    BookStore bookStore;
+    CSVReader csvReader;
+    CSVWriter csvWriter;
+
+    BookCsvReader bookReader{ csvReader };
+    BookCSVWriter bookWriter{ csvWriter };
+    BookStore bookStore{ bookReader, bookWriter };
     UserStore userStore;
+
+    FileContext bookFile;
+    FileContext userFile;
     AuthorizeContext authCtx;
 
     std::vector<Command*> commands
