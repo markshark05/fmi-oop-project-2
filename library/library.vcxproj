@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="AuthorizeContext.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookCSVReader.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="UserStore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="AuthorizeContext.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookCSVReader.h" />
