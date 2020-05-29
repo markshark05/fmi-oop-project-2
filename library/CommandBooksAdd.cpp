@@ -49,11 +49,3 @@ void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::ve
 
     bookStore->Add(book);
 }
-
-std::string CommandBooksAdd::promptLine(std::istream& in, std::ostream& out, const std::string& prompt)
-{
-    std::string str;
-    out << prompt << ": ";
-    std::getline(in, str);
-    return str;
-}

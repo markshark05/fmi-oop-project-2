@@ -23,5 +23,5 @@ private:
 
     bool running;
     void loop();
-    std::vector<std::string> parseArgs(std::istringstream& linestream, unsigned int max);
+    std::vector<std::string> parseArgs(std::istringstream& linestream);
 };

@@ -51,8 +51,8 @@ void LibraryCommandLoop::loop()
 
             if (command)
             {
-                std::vector<std::string> args = parseArgs(linestream, command->getMinArgsCount());
-                if (args.size() != command->getMinArgsCount())
+                std::vector<std::string> args = parseArgs(linestream);
+                if (args.size() < command->getMinArgsCount())
                 {
                     out << "Expected " << command->getMinArgsCount() << " argument(s) but got " << args.size() << "." << std::endl;
                 }
@@ -73,11 +73,11 @@ void LibraryCommandLoop::loop()
     }
 }
 
-std::vector<std::string> LibraryCommandLoop::parseArgs(std::istringstream& linestream, unsigned int max)
+std::vector<std::string> LibraryCommandLoop::parseArgs(std::istringstream& linestream)
 {
     std::vector<std::string> args;
     std::string token;
-    for (unsigned int i = 0; i < max && linestream >> token; i++)
+    while(linestream >> token)
     {
         args.push_back(token);
     }

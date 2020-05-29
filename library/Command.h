@@ -5,6 +5,10 @@
 
 class Command
 {
+private:
+    std::string name;
+    int minArgsCount;
+    std::string helpMessage;
 public:
     Command(const std::string& name, int minArgsCount, const std::string& helpMessage);
     
@@ -14,8 +18,6 @@ public:
 
     virtual bool authorize() = 0;
     virtual void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) = 0;
-private:
-    std::string name;
-    int minArgsCount;
-    std::string helpMessage;
+protected:
+    std::string promptLine(std::istream& in, std::ostream& out, const std::string& prompt);
 };

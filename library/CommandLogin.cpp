@@ -1,7 +1,7 @@
 #include "CommandLogin.h"
 
 CommandLogin::CommandLogin(AuthorizeContext& auth, UserStore& userStore) :
-    Command("login", 2, "login <interactive>"),
+    Command("login", 0, "login [<username>] [<passowrd>]"),
     auth(auth),
     userStore(userStore)
 {
@@ -14,8 +14,8 @@ bool CommandLogin::authorize()
 
 void CommandLogin::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    const std::string& username = args[0];
-    const std::string& password = args[1];
+    const std::string username{ args.size() > 0 ? args[0] : promptLine(in, out, "Username") };
+    const std::string password{ args.size() > 1 ? args[1] : promptLine(in, out, "Password") };
 
     if (auth.getActiveUser())
     {
