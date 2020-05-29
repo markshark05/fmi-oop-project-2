@@ -1,7 +1,8 @@
 #include "CommandClose.h"
 
-CommandClose::CommandClose() :
-    Command("close", 0, "closes currently opened file")
+CommandClose::CommandClose(FileContext& fileCtx) :
+    Command("close", 0, "closes currently opened file"),
+    fileCtx(&fileCtx)
 {
 }
 
@@ -12,5 +13,12 @@ bool CommandClose::authorize()
 
 void CommandClose::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    out << "close executed" << std::endl;
+    if (!fileCtx->getActiveFile())
+    {
+        out << "No open file to close" << std::endl;
+        return;
+    }
+
+    fileCtx->clearActiveFile();
+    out << "File closed successfully" << std::endl;
 }

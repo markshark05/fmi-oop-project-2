@@ -1,20 +1,27 @@
 #include <map>
 #include "CommandBooksSort.h"
 
-CommandBooksSort::CommandBooksSort(AuthorizeContext const& auth, BookStore& bookStore) :
+CommandBooksSort::CommandBooksSort(AuthorizeContext const& auth, const FileContext& fileCtx, BookStore& bookStore) :
     Command("books_sort", 1, "books sort <option> [asc | desc]"),
-    auth(auth),
-    bookStore(bookStore)
+    auth(&auth),
+    fileCtx(&fileCtx),
+    bookStore(&bookStore)
 {
 }
 
 bool CommandBooksSort::authorize()
 {
-    return auth.getActiveUser();
+    return auth->getActiveUser();
 }
 
 void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
+    if (!fileCtx->getActiveFile())
+    {
+        out << "Command requires an open file." << std::endl;
+        return;
+    }
+
     const std::string& option = args[0];
     const std::string& asc_desc = args[1];
 
@@ -63,7 +70,7 @@ void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::v
         return;
     }
 
-    std::vector<Book*> books = bookStore.GetSorted(sort_f[option]);
+    std::vector<Book*> books = bookStore->GetSorted(sort_f[option]);
     if (books.empty())
     {
         out << "No results found." << std::endl;

@@ -1,20 +1,27 @@
 #include <map>
 #include "CommandBooksFind.h"
 
-CommandBooksFind::CommandBooksFind(AuthorizeContext const& auth, BookStore& bookStore) :
+CommandBooksFind::CommandBooksFind(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
     Command("books_find", 2, "books find <option> <option_string>"),
-    auth(auth),
-    bookStore(bookStore)
+    auth(&auth),
+    fileCtx(&fileCtx),
+    bookStore(&bookStore)
 {
 }
 
 bool CommandBooksFind::authorize()
 {
-    return auth.getActiveUser();
+    return auth->getActiveUser();
 }
 
 void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
+    if (!fileCtx->getActiveFile())
+    {
+        out << "Command requires an open file." << std::endl;
+        return;
+    }
+
     const std::string& option = args[0];
     const std::string& option_string = args[1];
 
@@ -44,7 +51,7 @@ void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::v
         return;
     }
 
-    std::vector<Book*> books = bookStore.GetFiltered(filter_f[option]);
+    std::vector<Book*> books = bookStore->GetFiltered(filter_f[option]);
     if (books.empty())
     {
         out << "No results found." << std::endl;

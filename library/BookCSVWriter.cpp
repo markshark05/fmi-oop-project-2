@@ -22,6 +22,7 @@ void BookCSVWriter::writeCSVBook(std::ostream& out, const Book& book)
         tags_str += t;
         tags_str += " ";
     }
+    fields.push_back(tags_str);
 
     csvWriter.writeCSVRow(out, fields);
 }

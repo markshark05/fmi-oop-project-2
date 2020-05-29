@@ -30,27 +30,28 @@ int main()
     BookCsvReader bookReader{ csvReader };
     BookCSVWriter bookWriter{ csvWriter };
     BookStore bookStore{ bookReader, bookWriter };
+
     UserStore userStore;
 
-    FileContext bookFile;
-    FileContext userFile;
+    FileContext bookFileCtx;
+    FileContext userFileCtx;
     AuthorizeContext authCtx;
 
     std::vector<Command*> commands
     {
-        new CommandOpen,
-        new CommandClose,
-        new CommandSave,
-        new CommandSaveAs,
+        new CommandOpen{ bookFileCtx, bookStore },
+        new CommandClose{ bookFileCtx },
+        new CommandSave{ bookFileCtx, bookStore },
+        new CommandSaveAs{ bookFileCtx, bookStore },
 
         new CommandLogin{ authCtx, userStore },
         new CommandLogout{ authCtx },
 
-        new CommandBooksAdd{ authCtx, bookStore },
-        new CommandBooksAll{ authCtx, bookStore },
-        new CommandBooksFind{ authCtx, bookStore },
-        new CommandBooksInfo{ authCtx, bookStore },
-        new CommandBooksSort{ authCtx, bookStore },
+        new CommandBooksAdd{ authCtx, bookFileCtx, bookStore },
+        new CommandBooksAll{ authCtx, bookFileCtx, bookStore },
+        new CommandBooksFind{ authCtx, bookFileCtx, bookStore },
+        new CommandBooksInfo{ authCtx, bookFileCtx, bookStore },
+        new CommandBooksSort{ authCtx, bookFileCtx, bookStore },
 
         new CommandUsersAdd{ authCtx, userStore},
         new CommandUsersRemove{ authCtx, userStore},

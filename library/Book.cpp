@@ -102,7 +102,7 @@ std::ostream& Book::print_detailed(std::ostream& out) const
         << "Year: " << year << std::endl
         << "Description: " << description << std::endl
         << "Rating: " << rating << std::endl
-        << "Tags: " << rating << std::endl;
+        << "Tags: ";
     
     for (const std::string& t : tags)
     {

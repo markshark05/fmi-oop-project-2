@@ -29,11 +29,11 @@ BookStore::~BookStore()
 BookStore& BookStore::operator=(const BookStore& other)
 {
     BookStore copy{ other };
-    swap(*this, other);
+    swap(*this, copy);
     return *this;
 }
 
-void BookStore::swap(const BookStore& a, const BookStore& b)
+void BookStore::swap(BookStore& a, BookStore& b)
 {
     std::swap(a.reader, b.reader);
     std::swap(a.writer, b.writer);
@@ -91,7 +91,7 @@ void BookStore::RemoveById(unsigned int id)
 
 bool BookStore::load(const std::string& fileName)
 {
-    std::ifstream file{ fileName };
+    std::fstream file{ fileName, std::ios::in | std::ios::out | std::fstream::app };
     if (!file)
     {
         return false;
@@ -117,7 +117,7 @@ bool BookStore::load(const std::string& fileName)
 
 bool BookStore::save(const std::string& fileName)
 {
-    std::ofstream file{ fileName }; // ios::trunc by default
+    std::ofstream file{ fileName, std::ios::trunc };
     if (!file)
     {
         return false;

@@ -1,20 +1,27 @@
 #include <sstream>
 #include "CommandBooksAdd.h"
 
-CommandBooksAdd::CommandBooksAdd(AuthorizeContext const& auth, BookStore& bookStore) :
+CommandBooksAdd::CommandBooksAdd(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
     Command("books_add", 0, "books_add <interactive>"),
-    auth(auth),
-    bookStore(bookStore)
+    auth(&auth),
+    fileCtx(&fileCtx),
+    bookStore(&bookStore)
 {
 }
 
 bool CommandBooksAdd::authorize()
 {
-    return auth.getActiveUser() && auth.getActiveUser()->getIsAdmin();
+    return auth->getActiveUser() && auth->getActiveUser()->getIsAdmin();
 }
 
 void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
+    if (!fileCtx->getActiveFile())
+    {
+        out << "Command requires an open file." << std::endl;
+        return;
+    }
+
     Book book;
     book.setTitle(promptLine(in, out, "Title"));
     book.setAuthor(promptLine(in, out, "Author"));
@@ -40,7 +47,7 @@ void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::ve
     ratingstr >> rating;
     book.setRating(rating);
 
-    bookStore.Add(book);
+    bookStore->Add(book);
 }
 
 std::string CommandBooksAdd::promptLine(std::istream& in, std::ostream& out, const std::string& prompt)

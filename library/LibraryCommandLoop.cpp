@@ -58,7 +58,7 @@ void LibraryCommandLoop::loop()
                 }
                 else if (!command->authorize())
                 {
-                    out << "You are not authorized to perform this action." << std::endl;
+                    out << "You are not authorized to run this command." << std::endl;
                 }
                 else
                 {

@@ -8,7 +8,7 @@
 class BookStore
 {
 private:
-    const unsigned int AUTO_INCREMENT_DEFAULT{ 1 };
+    unsigned int AUTO_INCREMENT_DEFAULT{ 1 };
     
     BookCsvReader* reader;
     BookCSVWriter* writer;
@@ -23,7 +23,7 @@ public:
     BookStore(const BookStore& other);
     ~BookStore();
     BookStore& operator = (const BookStore& other);
-    void swap(const BookStore& a, const BookStore& b);
+    void swap(BookStore& a, BookStore& b);
 
     void Add(const Book& book);
     Book* GetById(unsigned int id);

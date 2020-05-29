@@ -1,16 +1,18 @@
 #pragma once
 #include "Command.h"
 #include "AuthorizeContext.h"
+#include "FileContext.h"
 #include "BookStore.h"
 
 class CommandBooksFind :
     public Command
 {
+private:
+    const AuthorizeContext* auth;
+    const FileContext* fileCtx;
+    BookStore* bookStore;
 public:
-    CommandBooksFind(AuthorizeContext const& auth, BookStore& bookStore);
+    CommandBooksFind(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore);
     bool authorize() override;
     void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) override;
-private:
-    AuthorizeContext const& auth;
-    BookStore& bookStore;
 };
