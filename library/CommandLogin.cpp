@@ -14,12 +14,6 @@ bool CommandLogin::authorize()
 
 void CommandLogin::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (auth.getActiveUser())
-    {
-        out << "You are already logged in." << std::endl;
-        return;
-    }
-
     const std::string username{ args.size() > 0 ? args[0] : promptLine(in, out, "Username") };
     const std::string password{ args.size() > 1 ? args[1] : promptLine(in, out, "Password") };
 

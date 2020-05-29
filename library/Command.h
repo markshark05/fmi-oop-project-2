@@ -16,7 +16,8 @@ public:
     int getMinArgsCount() const;
     const std::string& getHelpMessage() const;
 
-    virtual bool authorize() = 0;
+    virtual bool authorize();
+    virtual bool fileRequirement();
     virtual void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) = 0;
 protected:
     std::string promptLine(std::istream& in, std::ostream& out, const std::string& prompt);

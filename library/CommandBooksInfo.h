@@ -14,5 +14,6 @@ private:
 public:
     CommandBooksInfo(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore);
     bool authorize() override;
+    bool fileRequirement() override;
     void execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args) override;
 };

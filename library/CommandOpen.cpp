@@ -7,11 +7,6 @@ CommandOpen::CommandOpen(FileContext& fileCtx, BookStore& bookStore) :
 {
 }
 
-bool CommandOpen::authorize()
-{
-    return true;
-}
-
 void CommandOpen::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::string& filename = args[0];

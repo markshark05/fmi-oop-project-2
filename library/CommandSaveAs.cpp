@@ -7,20 +7,14 @@ CommandSaveAs::CommandSaveAs(FileContext& fileCtx, BookStore& bookStore) :
 {
 }
 
-bool CommandSaveAs::authorize()
+bool CommandSaveAs::fileRequirement()
 {
-    return true;
+    return fileCtx->getActiveFile();
 }
 
 void CommandSaveAs::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::string& filename = args[0];
-
-    if (!fileCtx->getActiveFile())
-    {
-        out << "No open file to save" << std::endl;
-        return;
-    }
 
     if (bookStore->save(filename))
     {

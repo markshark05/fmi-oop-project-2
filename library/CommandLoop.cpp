@@ -55,13 +55,17 @@ void CommandLoop::loop()
             if (command)
             {
                 std::vector<std::string> args = parseArgs(linestream);
-                if ((int)args.size() < command->getMinArgsCount())
-                {
-                    out << "Expected " << command->getMinArgsCount() << " argument(s) but got " << args.size() << "." << std::endl;
-                }
-                else if (!command->authorize())
+                if (!command->authorize())
                 {
                     out << "You are not authorized to run this command." << std::endl;
+                }
+                else if (!command->fileRequirement())
+                {
+                    out << "Command requires an open file." << std::endl;
+                }
+                else if ((int)args.size() < command->getMinArgsCount())
+                {
+                    out << "Expected " << command->getMinArgsCount() << " argument(s) but got " << args.size() << "." << std::endl;
                 }
                 else
                 {

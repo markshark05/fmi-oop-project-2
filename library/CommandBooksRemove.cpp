@@ -13,6 +13,11 @@ bool CommandBooksRemove::authorize()
     return auth->getActiveUser() && auth->getActiveUser()->getIsAdmin();
 }
 
+bool CommandBooksRemove::fileRequirement()
+{
+    return fileCtx->getActiveFile();
+}
+
 void CommandBooksRemove::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     if (!fileCtx->getActiveFile())

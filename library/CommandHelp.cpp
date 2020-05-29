@@ -7,11 +7,6 @@ CommandHelp::CommandHelp(const ICommandsLoop& loop) :
 {
 }
 
-bool CommandHelp::authorize()
-{
-    return true;
-}
-
 void CommandHelp::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const int COL_NAME = 20;

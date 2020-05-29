@@ -6,19 +6,13 @@ CommandClose::CommandClose(FileContext& fileCtx) :
 {
 }
 
-bool CommandClose::authorize()
+bool CommandClose::fileRequirement()
 {
-    return true;
+    return fileCtx->getActiveFile();
 }
 
 void CommandClose::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (!fileCtx->getActiveFile())
-    {
-        out << "No open file to close" << std::endl;
-        return;
-    }
-
     fileCtx->clearActiveFile();
     out << "File closed successfully" << std::endl;
 }

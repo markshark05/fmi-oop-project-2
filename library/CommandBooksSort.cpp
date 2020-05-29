@@ -14,6 +14,11 @@ bool CommandBooksSort::authorize()
     return auth->getActiveUser();
 }
 
+bool CommandBooksSort::fileRequirement()
+{
+    return fileCtx->getActiveFile();
+}
+
 void CommandBooksSort::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     if (!fileCtx->getActiveFile())

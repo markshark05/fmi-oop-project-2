@@ -14,6 +14,11 @@ bool CommandBooksFind::authorize()
     return auth->getActiveUser();
 }
 
+bool CommandBooksFind::fileRequirement()
+{
+    return fileCtx->getActiveFile();
+}
+
 void CommandBooksFind::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     if (!fileCtx->getActiveFile())

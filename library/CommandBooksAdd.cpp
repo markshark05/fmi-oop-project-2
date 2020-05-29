@@ -14,14 +14,13 @@ bool CommandBooksAdd::authorize()
     return auth->getActiveUser() && auth->getActiveUser()->getIsAdmin();
 }
 
+bool CommandBooksAdd::fileRequirement()
+{
+    return fileCtx->getActiveFile();
+}
+
 void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
-    if (!fileCtx->getActiveFile())
-    {
-        out << "Command requires an open file." << std::endl;
-        return;
-    }
-
     Book book;
     book.setTitle(promptLine(in, out, "Title"));
     book.setAuthor(promptLine(in, out, "Author"));
