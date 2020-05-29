@@ -2,19 +2,19 @@
 
 CommandUsersRemove::CommandUsersRemove(AuthorizeContext const& auth, UserStore& userStore) :
     Command("users_remove", 1, "users remove <user> - removes an existing user"),
-    auth(auth),
-    userStore(userStore)
+    auth(&auth),
+    userStore(&userStore)
 {
 }
 
 bool CommandUsersRemove::authorize()
 {
-    return auth.getActiveUser() && auth.getActiveUser()->getIsAdmin();
+    return auth->getActiveUser() && auth->getActiveUser()->getIsAdmin();
 }
 
 void CommandUsersRemove::execute(std::istream& in, std::ostream& out, const std::vector<std::string>& args)
 {
     const std::string& username = args[0];
 
-    userStore.RemoveByUsername(username);
+    userStore->RemoveByUsername(username);
 }

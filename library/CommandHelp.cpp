@@ -3,7 +3,7 @@
 
 CommandHelp::CommandHelp(const ICommandsLoop& loop) :
     Command("help", 0, "help - prints this information"),
-    _loop(loop)
+    _loop(&loop)
 {
 }
 
@@ -17,7 +17,7 @@ void CommandHelp::execute(std::istream& in, std::ostream& out, const std::vector
         << std::setw(COL_USAGE) << "Usage"
         << std::endl;
 
-    const std::vector<Command*>& commands = _loop.getCommands();
+    const std::vector<Command*>& commands = _loop->getCommands();
     for (Command* const& c : commands)
     {
         out
