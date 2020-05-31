@@ -67,6 +67,7 @@ bool UserStore::removeByUsername(const std::string& username)
     {
         if ((*i)->getUsername() == username)
         {
+            delete *i;
             users.erase(i);
             return true;
         }

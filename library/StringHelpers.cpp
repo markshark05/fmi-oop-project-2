@@ -43,7 +43,7 @@ int StringHelpers::icompare(const std::string& a, const std::string& b)
         }
     }
 
-    return a.length() - b.length();
+    return int(a.length() - b.length());
 }
 
 int StringHelpers::icompare(const char c1, const char c2)

@@ -19,7 +19,7 @@ void CommandSaveAs::execute(std::istream& in, std::ostream& out, const std::vect
     if (bookStore->save(filename))
     {
         fileCtx->setActiveFile(filename);
-        out << "File saved successfully. Open file switeched to" << filename << std::endl;
+        out << "File saved successfully. Open file switeched to " << filename << std::endl;
         return;
     }
 

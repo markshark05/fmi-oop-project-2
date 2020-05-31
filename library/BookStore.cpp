@@ -53,7 +53,7 @@ void BookStore::add(const Book& book)
 
 Book* BookStore::getById(unsigned int id)
 {
-    for (Book* const& b : books)
+    for (Book* b : books)
     {
         if (b->getId() == id)
         {
@@ -85,6 +85,7 @@ bool BookStore::RemoveById(unsigned int id)
     {
         if ((*i)->getId() == id)
         {
+            delete *i;
             books.erase(i);
             return true;
         }
@@ -122,7 +123,7 @@ bool BookStore::save(const std::string& fileName)
         return false;
     }
 
-    for (Book*& b : books)
+    for (Book* b : books)
     {
         writer->writeCSVBook(file, *b);
     }
@@ -133,7 +134,7 @@ bool BookStore::save(const std::string& fileName)
 std::vector<Book*> BookStore::query(filterFunc filterF, sortFunc sortF)
 {
     std::vector<Book*> filtered;
-    for (auto b : books)
+    for (Book* b : books)
     {
         if (!filterF || filterF(b))
         {
