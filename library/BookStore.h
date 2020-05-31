@@ -13,7 +13,7 @@
 class BookStore
 {
 private:
-    unsigned int AUTO_INCREMENT_DEFAULT{ 1 };
+    static const unsigned int AUTO_INCREMENT_START;
     
     BookCSVReader* reader;
     BookCSVWriter* writer;

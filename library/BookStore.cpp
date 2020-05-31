@@ -2,8 +2,10 @@
 #include <fstream>
 #include "BookStore.h"
 
+const unsigned int BookStore::AUTO_INCREMENT_START{ 1 };
+
 BookStore::BookStore(BookCSVReader& reader, BookCSVWriter& writer) :
-    auto_increment(AUTO_INCREMENT_DEFAULT),
+    auto_increment(AUTO_INCREMENT_START),
     reader(&reader),
     writer(&writer)
 {
@@ -100,7 +102,7 @@ bool BookStore::load(const std::string& fileName)
 
     for (Book*& b : books) delete b;
     books.clear();
-    auto_increment = AUTO_INCREMENT_DEFAULT;
+    auto_increment = AUTO_INCREMENT_START;
 
     Book book;
     while (reader->readCsvBook(file, book))
