@@ -4,6 +4,10 @@
 #include "FileContext.h"
 #include "BookStore.h"
 
+/**
+ * @brief boosk info \<id\> - shows info about a book
+ * 
+ */
 class CommandBooksInfo :
     public Command
 {
@@ -12,6 +16,13 @@ private:
     const FileContext* fileCtx;
     BookStore* bookStore;
 public:
+    /**
+     * @brief Construct a new CommandBooksInfo
+     * 
+     * @param auth the AuthorizeContext used to authorize the user
+     * @param fileCtx the file Context used to issue commands to the BookStore
+     * @param bookStore the BookStore for CRUD operation
+     */
     CommandBooksInfo(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore);
     bool authorize() override;
     bool fileRequirement() override;
