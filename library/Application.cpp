@@ -22,7 +22,7 @@
 #include "CommandUsersAdd.h"
 #include "CommandUsersRemove.h"
 
-void Application::run(const std::string& userFile)
+void Application::run(std::istream& in, std::ostream& out, const std::string& userFile)
 {
     CSVReader csvReader;
     CSVWriter csvWriter;
@@ -61,7 +61,7 @@ void Application::run(const std::string& userFile)
         new CommandUsersRemove{ authCtx, userFileCtx, userStore},
     };
 
-    CLILoop cmdloop{ std::cin, std::cout, commands };
+    CLILoop cmdloop{ in, out, commands };
 
     commands.push_back(new CommandHelp{ cmdloop });
     commands.push_back(new CommandExit{ cmdloop });

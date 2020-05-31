@@ -4,6 +4,6 @@
 class Application
 {
 public:
-    void run(const std::string& userFile);
+    void run(std::istream& in, std::ostream& out, const std::string& userFile);
 };
 
