@@ -1,0 +1,36 @@
+help
+
+login admin i<3c++
+open books.csv
+books all
+
+books sort title asc
+books sort title desc
+
+books find author jk rowling
+books find title CodE CoMPLETE
+
+books add
+Test_title
+Test_author
+Test_genre
+Test_description
+2000
+tag1 tag2 tag3
+5
+
+books all
+
+books remove 6
+books remove 2
+books all
+
+saveas books2.csv
+
+users add pesho p360
+logout
+login pesho
+p360
+
+books all
+books remove 1
