@@ -65,51 +65,51 @@ public:
      */
     std::string getDescription() const;
     /**
-     * @brief Set the Description object
+     * @brief Set the Description
      * 
      */
     void setDescription(const std::string& value);
 
     /**
-     * @brief Get the Year object
+     * @brief Get the Year
      * 
      */
     unsigned int getYear() const;
     /**
-     * @brief Set the Year object
+     * @brief Set the Year
      * 
      */
     void setYear(unsigned int value);
 
     /**
-     * @brief Get the Tags object
+     * @brief Get the Tags
      * 
      */
     std::vector<std::string> getTags() const;
     /**
-     * @brief Set the Tags object
+     * @brief Set the Tags
      * 
      */
     void setTags(const std::vector<std::string>& value);
 
     /**
-     * @brief Get the Rating object
+     * @brief Get the Rating
      * 
      */
     float getRating() const;
     /**
-     * @brief Set the Rating object
+     * @brief Set the Rating
      * 
      */
     void setRating(float value);
 
     /**
-     * @brief Get the Id object
+     * @brief Get the Id
      * 
      */
     unsigned int getId() const;
     /**
-     * @brief Set the Id object
+     * @brief Set the Id
      * 
      */
     void setId(unsigned int value);
