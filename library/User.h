@@ -13,7 +13,7 @@ private:
     bool isAdmin;
 public:
     /**
-     * @brief Construct a new non-admin User with empty data
+     * @brief Construct a new non-admin User with default data
      * 
      */
     User();

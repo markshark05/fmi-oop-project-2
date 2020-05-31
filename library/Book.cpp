@@ -1,10 +1,14 @@
+#include <algorithm>
 #include "Book.h"
 
+const float Book::RATING_MIN{ 0.0f };
+const float Book::RATING_MAX{ 10.0f };
+const int Book::YEAR_DEFAULT{ 1970 };
 
 Book::Book() :
     id(0),
-    rating(0),
-    year(1970)
+    rating(RATING_MIN),
+    year(YEAR_DEFAULT)
 {
 }
 
@@ -75,7 +79,7 @@ float Book::getRating() const
 
 void Book::setRating(float value)
 {
-    rating = value;
+    rating = std::max(std::min(value, RATING_MAX), RATING_MIN);
 }
 
 unsigned int Book::getId() const

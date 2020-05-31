@@ -29,8 +29,10 @@ void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::ve
 
     std::istringstream yearstr{ promptLine(in, out, "Year") };
     unsigned year;
-    yearstr >> year;
-    book.setYear(year);
+    if (yearstr >> year)
+    {
+        book.setYear(year);
+    }
 
     std::istringstream tagsstr{ promptLine(in, out, "Tags") };
     std::string tag;
@@ -41,10 +43,13 @@ void CommandBooksAdd::execute(std::istream& in, std::ostream& out, const std::ve
     }
     book.setTags(tags);
 
-    std::istringstream ratingstr{ promptLine(in, out, "Rating") };
+    std::string rating_range = std::to_string(int(Book::RATING_MIN)) + "-" + std::to_string(int(Book::RATING_MAX));
+    std::istringstream ratingstr{ promptLine(in, out, "Rating(" + rating_range + ")") };
     float rating;
-    ratingstr >> rating;
-    book.setRating(rating);
+    if (ratingstr >> rating)
+    {
+        book.setRating(rating);
+    }
 
     bookStore->add(book);
 }

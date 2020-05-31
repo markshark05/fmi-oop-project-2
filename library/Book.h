@@ -21,7 +21,22 @@ private:
     unsigned int id;
 public:
     /**
-     * @brief Construct a new Book with empty data
+     * @brief The minimum rating
+     * 
+     */
+    static const float RATING_MIN;
+    /**
+     * @brief The maximum rating
+     * 
+     */
+    static const float RATING_MAX;
+    /**
+     * @brief The default year
+     * 
+     */
+    static const int YEAR_DEFAULT;
+    /**
+     * @brief Construct a new Book with default data
      * 
      */
     Book();
