@@ -1,7 +1,7 @@
 #include "CommandBooksInfo.h"
 
 CommandBooksInfo::CommandBooksInfo(AuthorizeContext const& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_info", 1, "boosk info <id> - shows info about a book"),
+    Command("books info", 1, "boosk info <id> - shows info about a book"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)

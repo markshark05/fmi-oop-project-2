@@ -3,7 +3,7 @@
 #include "StringHelpers.h"
 
 CommandBooksFind::CommandBooksFind(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_find", 2, "books find <option> <option_string> - lists books matching criteria"),
+    Command("books find", 2, "books find <option> <option_string> - lists books matching criteria"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)

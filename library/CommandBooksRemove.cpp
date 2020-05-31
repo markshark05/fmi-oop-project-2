@@ -1,7 +1,7 @@
 #include "CommandBooksRemove.h"
 
 CommandBooksRemove::CommandBooksRemove(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_remove", 1, "books remove <id> - removes an existing book"),
+    Command("books remove", 1, "books remove <id> - removes an existing book"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)

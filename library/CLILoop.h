@@ -48,5 +48,6 @@ public:
     const std::vector<Command*>& getCommands() const;
 private:
     void loop();
-    std::vector<std::string> parseArgs(std::istringstream& linestream);
+    Command* findMatchingCommand(const std::string& lienStr);
+    std::vector<std::string> parseArgs(const std::string& lineStr);
 };

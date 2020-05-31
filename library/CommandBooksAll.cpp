@@ -1,7 +1,7 @@
 #include "CommandBooksAll.h"
 
 CommandBooksAll::CommandBooksAll(const AuthorizeContext& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_all", 0, "books all - lists all books"),
+    Command("books all", 0, "books all - lists all books"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)

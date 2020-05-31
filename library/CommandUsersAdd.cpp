@@ -1,7 +1,7 @@
 #include "CommandUsersAdd.h"
 
 CommandUsersAdd::CommandUsersAdd(AuthorizeContext const& auth, const FileContext& fileCtx, UserStore& userStore) :
-    Command("users_add", 2, "users add <user> <password> - adds a new user"),
+    Command("users add", 2, "users add <user> <password> - adds a new user"),
     auth(&auth),
     fileCtx(&fileCtx),
     userStore(&userStore)

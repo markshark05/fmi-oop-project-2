@@ -2,7 +2,7 @@
 #include "CommandBooksSort.h"
 
 CommandBooksSort::CommandBooksSort(AuthorizeContext const& auth, const FileContext& fileCtx, BookStore& bookStore) :
-    Command("books_sort", 1, "books sort <option> [asc | desc] - lists books sorted by <option>"),
+    Command("books sort", 1, "books sort <option> [asc | desc] - lists books sorted by <option>"),
     auth(&auth),
     fileCtx(&fileCtx),
     bookStore(&bookStore)
